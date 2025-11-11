@@ -371,6 +371,7 @@ $total_pages = ceil($total_announcements / $limit);
                 <!-- Announcements Grid -->
                 <div class="row" id="announcementsGrid">
                     <?php foreach ($announcements as $announcement): ?>
+                    <?php $formCodeAttr = !empty($announcement['form_code']) ? htmlspecialchars($announcement['form_code'], ENT_QUOTES, 'UTF-8') : ''; ?>
                     <div class="col-lg-6 col-xl-4 mb-4" data-type="<?php echo htmlspecialchars($announcement['form_type']); ?>" id="announcement-<?php echo $announcement['form_id']; ?>">
                         <div class="announcement-card position-relative">
                             <?php if ($is_logged_in): ?>
@@ -440,7 +441,7 @@ $total_pages = ceil($total_announcements / $limit);
                                 
                                 <?php if (in_array($announcement['form_type'], ['survey', 'feedback'])): ?>
                                     <?php if (!empty($announcement['form_code'])): ?>
-                                <button class="btn btn-outline-success btn-sm" onclick="participateInForm(<?php echo (int)$announcement['form_id']; ?>, <?php echo json_encode($announcement['form_code']); ?>)">
+                                <button class="btn btn-outline-success btn-sm" data-form-id="<?php echo (int)$announcement['form_id']; ?>" data-form-code="<?php echo $formCodeAttr; ?>" onclick="handleParticipateClick(this)">
                                     <i class="fas fa-hand-point-right me-1"></i>Participate
                                 </button>
                                     <?php else: ?>

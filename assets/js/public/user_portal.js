@@ -110,7 +110,7 @@ async function viewAnnouncement(formId) {
 /**
  * Participate in a form (survey/feedback)
  */
-function participateInForm(formId) {
+function participateInForm(formId, formCode) {
     // Close the modal first
     const modal = bootstrap.Modal.getInstance(document.getElementById('announcementModal'));
     if (modal) {
@@ -118,7 +118,18 @@ function participateInForm(formId) {
     }
     
     // Redirect to the form participation page
-    window.location.href = `../public/form/index.php?form_id=${formId}`;
+    if (formCode) {
+        window.location.href = `../public/form/index.php?code=${encodeURIComponent(formCode)}`;
+    } else {
+        window.location.href = `../public/form/index.php?form_id=${formId}`;
+    }
+}
+
+function handleParticipateClick(button) {
+    if (!button) return;
+    const formId = parseInt(button.dataset.formId, 10);
+    const formCode = button.dataset.formCode || '';
+    participateInForm(formId, formCode);
 }
 
 /**
