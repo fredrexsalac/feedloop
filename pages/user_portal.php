@@ -72,41 +72,74 @@ try {
     $stmt->execute();
     $total_announcements = $stmt->fetchColumn();
     
-    // Get announcements with admin details
-    $stmt = $pdo->prepare("
-        SELECT 
-            cf.form_id,
-            cf.title,
-            cf.description,
-            cf.created_at,
-            cf.updated_at,
-            CASE 
-                WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
-                WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
-                WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
-                ELSE 'announcement'
-            END as form_type,
-            cf.max_responses,
-            u.username as admin_username,
-            COALESCE(a.full_name, u.username) as admin_name,
-            a.position as admin_position,
-            cf.response_count
+    // Get paginated list of form IDs first to satisfy ONLY_FULL_GROUP_BY
+    $formsStmt = $pdo->prepare("
+        SELECT cf.form_id
         FROM custom_forms cf
-        JOIN users u ON cf.created_by = u.user_id
-        LEFT JOIN admins a ON u.user_id = a.user_id
-        WHERE cf.is_active = 1 
-        AND cf.visibility IN ('public', 'department')
-        $dismissed_clause
-        GROUP BY cf.form_id
+        WHERE cf.is_active = 1
+          AND cf.visibility IN ('public', 'department')
+          $dismissed_clause
         ORDER BY cf.updated_at DESC, cf.created_at DESC
-        LIMIT $limit OFFSET $offset
+        LIMIT :limit OFFSET :offset
     ");
     if ($is_logged_in && $user_id > 0) {
-        $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+        $formsStmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
     }
-    $stmt->execute();
-    $announcements = $stmt->fetchAll();
-    
+    $formsStmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $formsStmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+    $formsStmt->execute();
+    $formIds = array_column($formsStmt->fetchAll(PDO::FETCH_ASSOC), 'form_id');
+
+    if (!empty($formIds)) {
+        $placeholders = implode(',', array_fill(0, count($formIds), '?'));
+        $detailsStmt = $pdo->prepare("
+            SELECT
+                cf.form_id,
+                cf.title,
+                cf.form_code,
+                cf.description,
+                cf.created_at,
+                cf.updated_at,
+                CASE 
+                    WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
+                    WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
+                    WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
+                    ELSE 'announcement'
+                END as form_type,
+                cf.max_responses,
+                u.username as admin_username,
+                COALESCE(a.full_name, u.username) as admin_name,
+                a.position as admin_position,
+                cf.response_count
+            FROM custom_forms cf
+            JOIN users u ON cf.created_by = u.user_id
+            LEFT JOIN admins a ON u.user_id = a.user_id
+            WHERE cf.form_id IN ($placeholders)
+        ");
+
+        // Bind IDs for IN clause
+        $paramIndex = 1;
+        foreach ($formIds as $id) {
+            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
+        }
+
+        $detailsStmt->execute();
+        $fetched = $detailsStmt->fetchAll();
+        // Reorder to match pagination order
+        $indexed = [];
+        foreach ($fetched as $row) {
+            $indexed[$row['form_id']] = $row;
+        }
+        $announcements = [];
+        foreach ($formIds as $id) {
+            if (isset($indexed[$id])) {
+                $announcements[] = $indexed[$id];
+            }
+        }
+    } else {
+        $announcements = [];
+    }
+
 } catch (Exception $e) {
     $error_message = "Error loading announcements: " . $e->getMessage();
     $total_announcements = 0;
@@ -345,6 +378,7 @@ $total_pages = ceil($total_announcements / $limit);
                 <!-- Announcements Grid -->
                 <div class="row" id="announcementsGrid">
                     <?php foreach ($announcements as $announcement): ?>
+                    <?php $formCodeAttr = !empty($announcement['form_code']) ? htmlspecialchars($announcement['form_code'], ENT_QUOTES, 'UTF-8') : ''; ?>
                     <div class="col-lg-6 col-xl-4 mb-4" data-type="<?php echo htmlspecialchars($announcement['form_type']); ?>" id="announcement-<?php echo $announcement['form_id']; ?>">
                         <div class="announcement-card position-relative">
                             <?php if ($is_logged_in): ?>
@@ -413,9 +447,15 @@ $total_pages = ceil($total_announcements / $limit);
                                 </button>
                                 
                                 <?php if (in_array($announcement['form_type'], ['survey', 'feedback'])): ?>
-                                <button class="btn btn-outline-success btn-sm" onclick="participateInForm(<?php echo $announcement['form_id']; ?>)">
+                                    <?php if (!empty($announcement['form_code'])): ?>
+                                <button class="btn btn-outline-success btn-sm" data-form-id="<?php echo (int)$announcement['form_id']; ?>" data-form-code="<?php echo $formCodeAttr; ?>" onclick="handleParticipateClick(this)">
                                     <i class="fas fa-hand-point-right me-1"></i>Participate
                                 </button>
+                                    <?php else: ?>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="alert('This form is missing its public link. Please contact an administrator.'); return false;">
+                                    <i class="fas fa-info-circle me-1"></i>Link Missing
+                                </button>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
