@@ -1,63 +1,65 @@
-# HTTPS Security Configuration for FeedLoop
-# Force HTTPS redirect (DISABLED until SSL certificate is configured)
+# ========================================
+# FeedLoop .htaccess
+# ========================================
+
+# Enable Rewrite Engine
 RewriteEngine On
 
-# Redirect HTTP to HTTPS (commented out for localhost)
+# --------------------------------------------------
+# 1️⃣ HTTPS redirect (only if SSL is configured)
+# --------------------------------------------------
+# Uncomment for production after SSL is installed
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Clean URLs - Remove .php extension
+# --------------------------------------------------
+# 2️⃣ Clean URLs (remove .php extension)
+# --------------------------------------------------
+# Only apply if not on localhost
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [L]
 
-# Set index.php as default directory index
+# --------------------------------------------------
+# 3️⃣ Default index files
+# --------------------------------------------------
 DirectoryIndex index.php index.html
 
-# Security Headers
+# --------------------------------------------------
+# 4️⃣ Security headers
+# --------------------------------------------------
 <IfModule mod_headers.c>
-    # HSTS (HTTP Strict Transport Security)
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    
-    # Prevent MIME type sniffing
     Header always set X-Content-Type-Options "nosniff"
-    
-    # XSS Protection
     Header always set X-XSS-Protection "1; mode=block"
-    
-    # Clickjacking protection
     Header always set X-Frame-Options "SAMEORIGIN"
-    
-    # Referrer Policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Remove server signature
     Header unset X-Powered-By
     Header unset Server
 </IfModule>
 
-# Disable server signature (moved to main Apache config)
-# ServerTokens Prod
-
-# Protect sensitive files
+# --------------------------------------------------
+# 5️⃣ Protect sensitive files
+# --------------------------------------------------
 <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
     Order Allow,Deny
     Deny from all
 </FilesMatch>
 
-# Protect database connection file
 <Files "db.php">
     Order Allow,Deny
     Deny from all
 </Files>
 
-# Protect config files
 <Files "config.php">
     Order Allow,Deny
     Deny from all
 </Files>
 
-# Enable compression for better performance over HTTPS
+# --------------------------------------------------
+# 6️⃣ Compression
+# --------------------------------------------------
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -70,7 +72,9 @@ DirectoryIndex index.php index.html
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# Cache static resources
+# --------------------------------------------------
+# 7️⃣ Caching static resources
+# --------------------------------------------------
 <IfModule mod_expires.c>
     ExpiresActive on
     ExpiresByType text/css "access plus 1 year"
