@@ -1,0 +1,119 @@
+/* Professional PDF Preview Modal Styling */
+.preview-logo {
+    max-width: 120px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.preview-title {
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 15px 0 5px 0;
+}
+
+.preview-subtitle {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.preview-section {
+    margin-bottom: 40px;
+}
+
+.preview-section-title {
+    color: #34495e;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #28a745;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #f0f9f4 0%, #d4edda 100%);
+    border-left: 5px solid #28a745;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.stat-box-label {
+    color: #7f8c8d;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.stat-box-value {
+    color: #28a745;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.preview-table thead {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+}
+
+.preview-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.preview-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.preview-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.preview-footer {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 3px solid #ecf0f1;
+    text-align: center;
+    color: #95a5a6;
+    font-size: 13px;
+}
+
+.preview-footer p {
+    margin: 5px 0;
+}
+
+#downloadPdfBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    transition: all 0.3s ease;
+}

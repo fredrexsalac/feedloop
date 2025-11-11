@@ -1,0 +1,56 @@
+/* Admin Registration Styles */
+
+.position-admin { 
+    background: #e3f2fd; 
+    color: #1976d2; 
+    padding: 4px 12px; 
+    border-radius: 20px; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    margin-left: 10px; 
+}
+
+.position-feedback { 
+    background: #fff8e1; 
+    color: #ef6c00; 
+    padding: 4px 12px; 
+    border-radius: 20px; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    margin-left: 10px; 
+}
+
+/* Role-specific theming */
+body[data-role="admin"] {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+}
+
+body[data-role="admin"] .logo-border {
+    border-color: #4caf50 !important;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3) !important;
+}
+
+body[data-role="admin"] .btn-login {
+    background: linear-gradient(135deg, #4caf50, #2e7d32) !important;
+}
+
+body[data-role="admin"] .btn-login:hover {
+    background: linear-gradient(135deg, #388e3c, #1b5e20) !important;
+}
+
+body[data-role="feedback"] {
+    background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+}
+
+body[data-role="feedback"] .logo-border {
+    border-color: #ffc107 !important;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3) !important;
+}
+
+body[data-role="feedback"] .btn-login {
+    background: linear-gradient(135deg, #ffc107, #ff8f00) !important;
+}
+
+body[data-role="feedback"] .btn-login:hover {
+    background: linear-gradient(135deg, #ffb300, #e65100) !important;
+}

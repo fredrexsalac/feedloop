@@ -1,0 +1,7 @@
+/* 
+ * Disable Source Map Loading
+ * Add this to prevent browsers from trying to load .map files
+ */
+
+/* This CSS comment prevents source map loading */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkaXNhYmxlLXNvdXJjZW1hcHMuY3NzIn0= */

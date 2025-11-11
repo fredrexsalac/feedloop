@@ -1,0 +1,13 @@
+.fl-chatbot-bubble{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#0d6efd;box-shadow:0 6px 16px rgba(13,110,253,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1060}
+.fl-chatbot-bubble img{width:28px;height:28px;filter:invert(1)}
+.fl-chatbot-panel{position:fixed;right:20px;bottom:90px;width:360px;max-width:92vw;height:520px;max-height:70vh;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden;z-index:1060}
+.fl-chatbot-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
+.fl-chatbot-title{font-weight:600}
+.fl-chatbot-body{flex:1;overflow:auto;padding:12px;background:#f8f9fa}
+.fl-chatbot-input{display:flex;gap:8px;padding:10px;border-top:1px solid #e5e7eb;background:#fff}
+.fl-chatbot-input textarea{flex:1;resize:none;max-height:120px;height:40px;border:1px solid #ced4da;border-radius:8px;padding:8px}
+.fl-chat-msg{margin-bottom:10px}
+.fl-chat-msg.user .bubble{background:#0d6efd;color:#fff}
+.fl-chat-msg.assistant .bubble{background:#e9ecef;color:#212529}
+.fl-chat-msg .bubble{display:inline-block;padding:8px 10px;border-radius:10px;max-width:85%}
+.fl-chatbot-footer-note{font-size:12px;color:#6c757d;padding:0 12px 8px}

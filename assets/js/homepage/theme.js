@@ -1,0 +1,7 @@
+// System color scheme detection for Bootstrap 5.3+
+function setThemeBySystemPreference() {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+}
+setThemeBySystemPreference();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeBySystemPreference);

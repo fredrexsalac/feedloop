@@ -1,0 +1,833 @@
+/**
+ * Custom Forms CSS
+ * Styling for Google Forms-inspired form builder
+ * Author: Cascade AI Assistant
+ * Date: October 19, 2025
+ */
+
+/* Main Container */
+.custom-forms-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.page-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.page-header p {
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+/* Statistics Cards */
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.stat-icon.bg-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-icon.bg-success {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+}
+
+.stat-icon.bg-info {
+    background: linear-gradient(135deg, #3498db 0%, #85c1e9 100%);
+}
+
+.stat-icon.bg-warning {
+    background: linear-gradient(135deg, #f39c12 0%, #f7dc6f 100%);
+}
+
+.stat-content h3 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-content p {
+    margin: 5px 0 0 0;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+    padding: 20px 25px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* Form Builder Styles */
+.question-item {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: white;
+    overflow: hidden;
+}
+
+.question-item:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.1);
+}
+
+.question-item .card-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 20px;
+}
+
+.question-item .card-body {
+    padding: 20px;
+}
+
+.question-number {
+    min-width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+}
+
+.question-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #495057;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 8px 15px;
+}
+
+.question-text:focus {
+    outline: none;
+    background: rgba(0,123,255,0.05) !important;
+    border-radius: 5px;
+}
+
+.question-options {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    margin-top: 15px;
+}
+
+.question-options .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.options-list .input-group {
+    margin-bottom: 10px;
+}
+
+.option-input {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+}
+
+.option-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40,167,69,0.4);
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background: #007bff;
+    border-color: #007bff;
+    transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d;
+    border-color: #6c757d;
+    transform: translateY(-1px);
+}
+
+.btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    transform: translateY(-1px);
+}
+
+.btn-group-sm .btn {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+}
+
+/* Table Styles */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    padding: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0,123,255,0.05);
+}
+
+/* Badges */
+.badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.badge.bg-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%) !important;
+}
+
+.badge.bg-info {
+    background: linear-gradient(135deg, #17a2b8 0%, #6c757d 100%) !important;
+}
+
+/* Progress Bar */
+.progress {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    transition: width 0.6s ease;
+}
+
+/* Modal Styles */
+.modal-xl {
+    max-width: 1200px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 15px 15px 0 0;
+    padding: 20px 25px;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #495057;
+    font-size: 1.3rem;
+}
+
+.modal-body {
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Empty State */
+.text-center.py-4 {
+    padding: 40px 20px !important;
+}
+
+.text-center.py-4 i {
+    color: #adb5bd;
+    margin-bottom: 15px;
+}
+
+.text-center.py-4 h4 {
+    color: #6c757d;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.text-center.py-4 p {
+    color: #adb5bd;
+    margin-bottom: 20px;
+}
+
+.text-center.py-5 {
+    padding: 60px 20px !important;
+}
+
+.text-center.py-5 i {
+    color: #adb5bd;
+    margin-bottom: 20px;
+}
+
+.text-center.py-5 h4 {
+    color: #6c757d;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.text-center.py-5 p {
+    color: #adb5bd;
+    margin-bottom: 30px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 10px 0;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0,123,255,0.1);
+    color: #007bff;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: rgba(220,53,69,0.1);
+    color: #dc3545;
+}
+
+.dropdown-divider {
+    margin: 5px 0;
+    border-color: #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-forms-container {
+        padding: 15px;
+    }
+    
+    .page-header {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .page-header h2 {
+        font-size: 2rem;
+    }
+    
+    .stat-card {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stat-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .modal-xl {
+        max-width: 95%;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .btn-group-sm .btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .stat-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .question-item .card-header {
+        padding: 10px 15px;
+    }
+    
+    .question-item .card-body {
+        padding: 15px;
+    }
+    
+    .question-options {
+        padding: 15px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading States */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Custom Scrollbar */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Action Dropdown Styling - FORCE TO ABSOLUTE FRONT */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 8px 0;
+    min-width: 180px;
+    animation: dropdownFadeIn 0.2s ease-out;
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin: 2px 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(4px);
+}
+
+.dropdown-item i {
+    width: 16px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    margin: 8px 12px;
+    border-color: #e9ecef;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Custom Forms specific dropdown button */
+.custom-forms-container .dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Three dots button styling */
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+/* Dropdown animation */
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Table action column */
+.table td:last-child {
+    width: 60px;
+    text-align: center;
+    position: relative;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Ensure table doesn't interfere with dropdown */
+.table-responsive {
+    overflow: visible !important;
+}
+
+/* Fix for Bootstrap table overflow issues */
+.card-body {
+    overflow: visible !important;
+}
+
+/* FORCE ALL CONTAINERS TO NOT INTERFERE WITH DROPDOWN */
+.custom-forms-container,
+.custom-forms-container .card,
+.custom-forms-container .card-body,
+.custom-forms-container .table-responsive,
+.custom-forms-container .table,
+.custom-forms-container tbody,
+.custom-forms-container tr,
+.custom-forms-container td {
+    overflow: visible !important;
+    position: static !important;
+    z-index: auto !important;
+}
+
+/* DROPDOWN CONTAINER MUST BE ON TOP */
+.custom-forms-container .dropdown {
+    position: relative !important;
+    z-index: 999998 !important;
+}
+
+/* DROPDOWN MENU POSITIONING */
+.dropdown-menu.show {
+    z-index: 999999 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    transform: translateY(2px) !important;
+}
+
+/* NUCLEAR OPTION - FORCE DROPDOWN TO FRONT */
+.custom-forms-container .dropdown-menu[data-bs-popper] {
+    z-index: 999999 !important;
+    position: absolute !important;
+}
+
+/* ENSURE DROPDOWN IS ALWAYS VISIBLE WHEN SHOWN */
+.dropdown.show .dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateY(2px) !important;
+    margin: 0 !important;
+    background: white !important;
+    border: 1px solid rgba(0,0,0,0.15) !important;
+}
+
+/* ===================================
+   PDF REPORT PREVIEW STYLING
+   =================================== */
+
+/* Report Preview Container */
+.report-preview-container {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+/* Report Page Styling */
+.report-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Report Cover Page */
+.report-cover {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+/* Report Section Headings */
+.report-section h2 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.report-section h3 {
+    font-weight: 600;
+}
+
+/* Chart Containers */
+.report-section canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Statistics Cards in Report */
+.report-section .row > div {
+    margin-bottom: 15px;
+}
+
+/* Sample Response Cards */
+.report-section .sample-responses {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Page Break Indicators (for print) */
+@media print {
+    .report-page {
+        page-break-inside: avoid;
+    }
+    
+    .report-section {
+        page-break-inside: avoid;
+    }
+    
+    div[style*="page-break-after: always"] {
+        page-break-after: always;
+    }
+    
+    div[style*="page-break-before: always"] {
+        page-break-before: always;
+    }
+}
+
+/* Modal Fullscreen Adjustments */
+#reportPreviewModal .modal-fullscreen {
+    max-width: 100%;
+}
+
+#reportPreviewModal .modal-body {
+    overflow-y: auto;
+}
+
+/* Loading State */
+.report-preview-container .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Responsive Report Adjustments */
+@media (max-width: 768px) {
+    .report-page {
+        padding: 20px !important;
+        max-width: 100% !important;
+    }
+    
+    .report-cover {
+        min-height: auto !important;
+        padding: 40px 20px !important;
+    }
+    
+    .report-section {
+        padding: 20px !important;
+    }
+}

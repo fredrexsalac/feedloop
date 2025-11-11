@@ -1,0 +1,97 @@
+body {
+  background: #fff !important;
+}
+
+/* Logo Styles */
+.navbar .navbar-brand .logo-with-border, 
+.navbar .logo-with-border {
+  border: 3px solid #007bff;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-brand .logo-with-border:hover,
+.navbar .logo-with-border:hover {
+  border-color: #0056b3;
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+  transform: scale(1.05);
+}
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.hero-section {
+  padding: 3rem 0 2rem 0;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.03);
+  margin-bottom: 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeIn 1s ease-out 0.2s forwards;
+}
+.quick-updates-card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-radius: 1rem;
+}
+.footer-light {
+  background: #f8f9fa;
+  color: #888;
+  border-top: 1px solid #eee;
+}
+.navbar-brand img {
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth dropdown animation for login */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.25s cubic-bezier(.4,0,.2,1), transform 0.25s cubic-bezier(.4,0,.2,1);
+  display: block;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Show dropdown on click or hover */
+.dropdown.show .dropdown-menu,
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Mac-style zoom effect for Login button */
+#loginDropdown {
+  transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  cursor: pointer;
+}
+
+#loginDropdown:hover,
+#loginDropdown:focus-visible {
+  transform: scale(1.13);
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.12);
+  z-index: 2;
+}
+
+.navbar,
+.footer-light,
+.alert {
+  background-color: var(--bs-body-bg, #fff) !important;
+  color: var(--bs-body-color, #212529) !important;
+  border-color: var(--bs-border-color, #dee2e6) !important;
+}

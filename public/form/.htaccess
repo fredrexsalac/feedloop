@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Handle form code in URL path
+# Redirect /feedloop/public/form/FORMCODE to /feedloop/public/form/?code=FORMCODE
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([A-Za-z0-9_-]+)$ index.php?code=$1 [QSA,L]
+
+# Optional: Handle direct access to index.php
+RewriteCond %{THE_REQUEST} \s/+feedloop/public/form/index\.php\?code=([^\s&]+) [NC]
+RewriteRule ^ /feedloop/public/form/%1? [R=301,L]

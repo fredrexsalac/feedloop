@@ -1,0 +1,378 @@
+[2025-11-08 08:43:41] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762587817
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 08:43:41] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-08 13:38:30] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762587821
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:38:30] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-08 13:46:17] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762605510
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:46:17] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-08 13:48:16] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762605977
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:48:16] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-08 13:48:19] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762606096
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:48:19] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-08 13:50:05] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762606099
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:50:05] User agent: Mozilla/5.0 (iPad; CPU OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+[2025-11-08 13:53:53] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762606205
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:53:53] User agent: Mozilla/5.0 (iPad; CPU OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+[2025-11-08 13:56:27] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762606433
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:56:27] User agent: Mozilla/5.0 (iPad; CPU OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+[2025-11-08 13:58:26] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762606679
+    [login_time] => 1762587817
+    [session_token] => 798a2aaad043f14c049051e3fe8caf9aa2eedf76787079167cabc9a6e219a703
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-08 13:58:26] User agent: Mozilla/5.0 (iPad; CPU OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+[2025-11-10 16:33:42] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762788818
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 16:33:42] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 16:37:55] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762789075
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 16:37:55] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 16:45:03] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762789496
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 16:45:03] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 16:47:22] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762789623
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 16:47:22] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:16:03] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762791360
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:16:03] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:16:49] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762791393
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:16:49] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:18:16] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762791469
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:18:16] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:25:31] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762791931
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:25:31] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:30:05] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762792204
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:30:05] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:49:24] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762793353
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:49:24] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-10 17:55:26] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762793725
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-10 17:55:26] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-11 05:00:05] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762793756
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-11 05:00:05] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0

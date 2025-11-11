@@ -1,0 +1,380 @@
+/* Login Success Modal Styles and Animations */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInBackground 0.5s ease-out forwards;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.7) translateY(-50px);
+    opacity: 0;
+    animation: slideInScale 0.6s ease-out 0.2s forwards;
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #28a745;
+    margin-bottom: 20px;
+    background: #d4edda;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transform: scale(0);
+    animation: bounceIn 0.8s ease-out 0.5s forwards;
+}
+
+.modal-content h2 {
+    color: #28a745;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out 0.8s forwards;
+}
+
+.modal-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out 1s forwards;
+}
+
+.countdown {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff8c00;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out 1.2s forwards, pulse 1s ease-in-out 1.8s infinite;
+}
+
+/* Suspension Modal Styles */
+#suspensionModal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+#suspensionModal.fade-out {
+    opacity: 0;
+}
+
+#suspensionModal .modal-content {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    margin: 0;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+    position: relative;
+    z-index: 10001;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+#suspensionModal.fade-out .modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+.suspension-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: suspensionPulse 2s infinite;
+}
+
+#suspensionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+}
+
+#suspensionMessage {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInBackground {
+    to {
+        background-color: rgba(0,0,0,0.5);
+    }
+}
+
+@keyframes slideInScale {
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes countdownPulse {
+    0%, 100% {
+        transform: scale(1);
+        color: #ff8c00;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #e6750e;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes suspensionSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes suspensionPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Mobile Responsiveness for Modals */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 25px 20px;
+        margin: 15px;
+        width: calc(100% - 30px);
+        max-width: none;
+        border-radius: 12px;
+    }
+    
+    #suspensionModal .modal-content {
+        padding: 30px 20px;
+        margin: 15px;
+        width: calc(100% - 30px);
+        max-width: none;
+    }
+    
+    .success-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 45px;
+    }
+    
+    .suspension-icon {
+        font-size: 3rem;
+    }
+    
+    #suspensionTitle {
+        font-size: 1.5rem;
+    }
+    
+    #suspensionMessage {
+        font-size: 1rem;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
+        border-radius: 10px;
+    }
+    
+    #suspensionModal .modal-content {
+        padding: 25px 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    .success-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+    
+    .suspension-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    #suspensionTitle {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    #suspensionMessage {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    .modal-content p {
+        font-size: 0.85rem;
+    }
+    
+    .countdown {
+        font-size: 0.9rem;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-content {
+        padding: 15px 12px;
+        margin: 8px;
+        width: calc(100% - 16px);
+    }
+    
+    #suspensionModal .modal-content {
+        padding: 20px 12px;
+        margin: 8px;
+        width: calc(100% - 16px);
+    }
+    
+    .success-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 30px;
+    }
+    
+    .suspension-icon {
+        font-size: 2rem;
+    }
+    
+    #suspensionTitle {
+        font-size: 1.2rem;
+    }
+    
+    #suspensionMessage {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile modals */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal-content {
+        padding: 15px 20px;
+        margin: 5px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    #suspensionModal .modal-content {
+        padding: 20px;
+        margin: 5px;
+        max-height: 90vh;
+    }
+    
+    .success-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+    
+    .suspension-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    #suspensionTitle {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .countdown {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,281 @@
+/**
+ * Public Form Styles
+ * CSS for public form submission interface
+ * Extracted from inline styles in PHP files
+ */
+
+/* Base styles */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.form-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.form-header p {
+    margin: 15px 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.form-body {
+    padding: 40px 30px;
+}
+
+.question-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 5px solid #667eea;
+}
+
+.question-number {
+    background: #667eea;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.question-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.required-indicator {
+    color: #e74c3c;
+    margin-left: 5px;
+}
+
+.form-control, .form-select, .form-check-input {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.rating-stars {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-stars .star {
+    transition: color 0.2s ease;
+}
+
+.rating-stars .star:hover,
+.rating-stars .star.active {
+    color: #ffc107;
+}
+
+.slider-container {
+    padding: 20px 0;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+.footer-info {
+    background: #f8f9fa;
+    padding: 20px 30px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Error/Success page styles */
+.error-container, .thank-you-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 600px;
+    margin: 50px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-icon, .success-icon {
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
+
+.success-icon {
+    color: #28a745;
+    animation: bounceIn 1s ease-out;
+}
+
+.error-icon {
+    color: #dc3545;
+}
+
+.error-icon.warning {
+    color: #ffc107;
+}
+
+.error-icon.info {
+    color: #17a2b8;
+}
+
+.error-title, .thank-you-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.error-message, .thank-you-message {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+    
+    .form-header {
+        padding: 30px 20px;
+    }
+    
+    .form-header h1 {
+        font-size: 2rem;
+    }
+    
+    .form-body {
+        padding: 30px 20px;
+    }
+    
+    .question-card {
+        padding: 20px;
+    }
+    
+    .error-container, .thank-you-container {
+        padding: 40px 20px;
+        margin: 0;
+        max-width: 90%;
+        width: 90%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .error-icon, .success-icon {
+        font-size: 4rem;
+    }
+    
+    .error-title, .thank-you-title {
+        font-size: 2rem;
+    }
+    
+    .error-message, .thank-you-message {
+        font-size: 1.1rem;
+    }
+}
