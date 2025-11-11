@@ -72,66 +72,41 @@ try {
     $stmt->execute();
     $total_announcements = $stmt->fetchColumn();
     
-    // Get paginated list of form IDs first to satisfy ONLY_FULL_GROUP_BY
-    $formsStmt = $pdo->prepare("
-        SELECT cf.form_id
+    // Get announcements with admin details
+    $stmt = $pdo->prepare("
+        SELECT 
+            cf.form_id,
+            cf.title,
+            cf.description,
+            cf.created_at,
+            cf.updated_at,
+            CASE 
+                WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
+                WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
+                WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
+                ELSE 'announcement'
+            END as form_type,
+            cf.max_responses,
+            u.username as admin_username,
+            COALESCE(a.full_name, u.username) as admin_name,
+            a.position as admin_position,
+            cf.response_count
         FROM custom_forms cf
-        WHERE cf.is_active = 1
-          AND cf.visibility IN ('public', 'department')
-          $dismissed_clause
+        JOIN users u ON cf.created_by = u.user_id
+        LEFT JOIN admins a ON u.user_id = a.user_id
+        WHERE cf.is_active = 1 
+        AND cf.visibility IN ('public', 'department')
+        $dismissed_clause
+        GROUP BY cf.form_id
         ORDER BY cf.updated_at DESC, cf.created_at DESC
-        LIMIT :limit OFFSET :offset
+        LIMIT $limit OFFSET $offset
     ");
     if ($is_logged_in && $user_id > 0) {
-        $formsStmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
     }
-    $formsStmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
-    $formsStmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
-    $formsStmt->execute();
-    $formIds = array_column($formsStmt->fetchAll(PDO::FETCH_ASSOC), 'form_id');
-
-    if (!empty($formIds)) {
-        $placeholders = implode(',', array_fill(0, count($formIds), '?'));
-        $detailsStmt = $pdo->prepare("
-            SELECT
-                cf.form_id,
-                cf.title,
-                cf.description,
-                cf.created_at,
-                cf.updated_at,
-                CASE 
-                    WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
-                    WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
-                    WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
-                    ELSE 'announcement'
-                END as form_type,
-                cf.max_responses,
-                u.username as admin_username,
-                COALESCE(a.full_name, u.username) as admin_name,
-                a.position as admin_position,
-                cf.response_count
-            FROM custom_forms cf
-            JOIN users u ON cf.created_by = u.user_id
-            LEFT JOIN admins a ON u.user_id = a.user_id
-            WHERE cf.form_id IN ($placeholders)
-            ORDER BY FIELD(cf.form_id, $placeholders)
-        ");
-
-        // Bind IDs twice (for IN clause and ORDER BY FIELD)
-        $paramIndex = 1;
-        foreach ($formIds as $id) {
-            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
-        }
-        foreach ($formIds as $id) {
-            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
-        }
-
-        $detailsStmt->execute();
-        $announcements = $detailsStmt->fetchAll();
-    } else {
-        $announcements = [];
-    }
-
+    $stmt->execute();
+    $announcements = $stmt->fetchAll();
+    
 } catch (Exception $e) {
     $error_message = "Error loading announcements: " . $e->getMessage();
     $total_announcements = 0;
