@@ -6,41 +6,58 @@
  * Date: October 24, 2025
  */
 
-// Check if SSL is available on the server
-function isSSLAvailable() {
-    // Check if HTTPS is already active
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+// Determine if the current request is already using HTTPS (directly or via proxy)
+function isSecureRequest(): bool {
+    if (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
         return true;
     }
-    
-    // Check if SSL port is available (basic check)
-    $host = $_SERVER['HTTP_HOST'];
-    $port = 443;
-    
-    // Simple socket test (with timeout to prevent hanging)
-    $connection = @fsockopen($host, $port, $errno, $errstr, 1);
-    if ($connection) {
-        fclose($connection);
+
+    if (!empty($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) {
         return true;
     }
-    
+
+    $forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+    if ($forwardedProto !== '' && stripos($forwardedProto, 'https') !== false) {
+        return true;
+    }
+
+    $forwardedSsl = $_SERVER['HTTP_X_FORWARDED_SSL'] ?? '';
+    if ($forwardedSsl !== '' && strtolower($forwardedSsl) === 'on') {
+        return true;
+    }
+
     return false;
 }
 
-// Force HTTPS redirect
-function forceHTTPS() {
-    // Check if not already HTTPS
-    if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
-        // Only redirect if SSL is available
-        if (isSSLAvailable()) {
-            // Get the current URL
-            $redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-            
-            // Redirect to HTTPS
-            header("Location: $redirectURL", true, 301);
-            exit();
-        }
+// Force HTTPS redirect when appropriate
+function forceHTTPS(): void {
+    if (isSecureRequest()) {
+        return;
     }
+
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    if ($host === '') {
+        return;
+    }
+
+    $uri = $_SERVER['REQUEST_URI'] ?? '/';
+    $redirectURL = 'https://' . $host . $uri;
+    header("Location: $redirectURL", true, 301);
+    exit();
+}
+
+// Decide whether HTTPS redirect should be applied (default disabled for proxy deployments)
+function shouldForceHTTPSRedirect(): bool {
+    if (defined('FEEDLOOP_FORCE_HTTPS')) {
+        return (bool)FEEDLOOP_FORCE_HTTPS;
+    }
+
+    $envValue = getenv('FEEDLOOP_FORCE_HTTPS');
+    if ($envValue !== false) {
+        return filter_var($envValue, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    return false;
 }
 
 // Add security headers
@@ -78,9 +95,6 @@ function enableHTTPSSecurity($forceRedirect = true) {
 // Auto-apply if this file is included
 if (!defined('HTTPS_SECURITY_APPLIED')) {
     define('HTTPS_SECURITY_APPLIED', true);
-    // Disable HTTPS redirect for localhost development
-    // Enable only security headers, no HTTPS redirect
-    $isLocalhost = in_array($_SERVER['HTTP_HOST'], ['localhost', '127.0.0.1', 'localhost:80', '127.0.0.1:80']);
-    enableHTTPSSecurity(!$isLocalhost); // Only force HTTPS on production
+    enableHTTPSSecurity(shouldForceHTTPSRedirect());
 }
 ?>
