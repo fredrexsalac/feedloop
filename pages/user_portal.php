@@ -74,7 +74,7 @@ try {
     
     // Get announcements with admin details
     $stmt = $pdo->prepare("
-        SELECT 
+        SELECT DISTINCT
             cf.form_id,
             cf.title,
             cf.description,
