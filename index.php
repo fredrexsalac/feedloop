@@ -1,73 +1,71 @@
 <?php
 /**
  * FeedLoop Smart Router
- * 
  * Automatically redirects users based on their login status and role
- * instead of always showing the landing page
+ * or shows the landing page.
  */
 
-// Enable HTTPS security
+// Enable HTTPS security if available
 require_once 'includes/https_redirect.php';
 
-// Start session only if not already active
+// Start session if not active
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Include database connection for user verification
+// Include database connection
 require_once 'db.php';
 
 // Load configuration
 $config = include 'config/landing_config.php';
 
-// Check for maintenance mode
+// Check maintenance mode
 if ($config['settings']['maintenance_mode'] ?? false) {
     include 'maintenance.html';
     exit();
 }
 
-// Check if user explicitly wants to see landing page (bypass smart redirect)
-if (isset($_GET['landing']) || isset($_GET['home'])) {
-    // User explicitly wants landing page - skip smart redirect
+// Determine if landing page should be shown
+$show_landing = false;
+
+// Localhost / explicit landing query always show landing
+if (isset($_GET['landing']) || isset($_GET['home']) || $_SERVER['HTTP_HOST'] === 'localhost:8080') {
     $show_landing = true;
 } else {
-    // Smart redirect based on user status
+    // Smart redirect based on session
     if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
-        // User is logged in - redirect to appropriate dashboard
         try {
-            // Debug: Log session info
-            error_log("Index.php - Session check: user_id=" . $_SESSION['user_id'] . ", role=" . $_SESSION['role']);
-            
-            // Verify session is still valid
-            if ($_SESSION['role'] === 'admin') {
-                // Admin user - check if session is valid
-                $stmt = $pdo->prepare("SELECT user_id, username, position FROM users u LEFT JOIN admins a ON u.user_id = a.user_id WHERE u.user_id = ?");
-                $stmt->execute([$_SESSION['user_id']]);
+            $role = $_SESSION['role'];
+            $userId = $_SESSION['user_id'];
+
+            if ($role === 'admin') {
+                $stmt = $pdo->prepare("
+                    SELECT u.user_id 
+                    FROM users u 
+                    LEFT JOIN admins a ON u.user_id = a.user_id 
+                    WHERE u.user_id = ?
+                ");
+                $stmt->execute([$userId]);
                 $user = $stmt->fetch();
-                
+
                 if ($user) {
-                    // Valid admin session - redirect to admin dashboard
                     header('Location: admin/dashboard_admin/admin_dashboard.php');
                     exit();
                 } else {
-                    // Invalid session - clear and redirect to login
                     session_unset();
                     session_destroy();
                     header('Location: admin/login.php');
                     exit();
                 }
-            } elseif ($_SESSION['role'] === 'user') {
-                // Frontend user - check if session is valid
-                $stmt = $pdo->prepare("SELECT id, username FROM frontend_users WHERE id = ?");
-                $stmt->execute([$_SESSION['user_id']]);
+            } elseif ($role === 'user') {
+                $stmt = $pdo->prepare("SELECT id FROM frontend_users WHERE id = ?");
+                $stmt->execute([$userId]);
                 $user = $stmt->fetch();
-                
+
                 if ($user) {
-                    // Valid user session - redirect to user portal
                     header('Location: pages/user_portal.php');
                     exit();
                 } else {
-                    // Invalid session - clear and redirect to login
                     session_unset();
                     session_destroy();
                     header('Location: auth/login.php');
@@ -75,27 +73,32 @@ if (isset($_GET['landing']) || isset($_GET['home'])) {
                 }
             }
         } catch (Exception $e) {
-            // Database error - log and continue to landing page
             error_log("Session verification error: " . $e->getMessage());
+            // Fall back to landing page
+            $show_landing = true;
         }
+    } else {
+        // No valid session - show landing
+        $show_landing = true;
     }
-    $show_landing = false;
 }
 
-// No valid session - show landing page
+// Determine which landing page version to use
 $landing_version = $config['version'] ?? 'php';
 
-switch ($landing_version) {
-    case 'php':
-    case 'html':
-        // Always use the new HTML landing page
-        include 'index.html';
-        break;
-        
-    case 'original':
-    default:
-        // Fallback to new landing as well
-        include 'index.html';
-        break;
+// Always use HTML landing for localhost
+if ($_SERVER['HTTP_HOST'] === 'localhost:8080') {
+    $landing_version = 'html';
+}
+
+// Show landing page
+if ($show_landing) {
+    switch ($landing_version) {
+        case 'php':
+        case 'html':
+        default:
+            include 'index.html';
+            break;
+    }
 }
 ?>
