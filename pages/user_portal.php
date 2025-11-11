@@ -42,8 +42,8 @@ if ($is_logged_in && $user_id > 0) {
 $announcements = [];
 $total_announcements = 0;
 $page = $_GET['page'] ?? 1;
-$limit = 6; // Show 6 announcements per page
-$offset = ($page - 1) * $limit;
+$limit = max(1, (int)6); // Show 6 announcements per page
+$offset = max(0, ($page - 1) * $limit);
 
 try {
     // Build WHERE clause to exclude dismissed announcements for logged-in users
@@ -97,14 +97,13 @@ try {
         WHERE cf.is_active = 1 
         AND cf.visibility IN ('public', 'department')
         $dismissed_clause
+        GROUP BY cf.form_id
         ORDER BY cf.updated_at DESC, cf.created_at DESC
-        LIMIT ? OFFSET ?
+        LIMIT $limit OFFSET $offset
     ");
     if ($is_logged_in && $user_id > 0) {
         $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
     }
-    $stmt->bindValue(1, (int)$limit, PDO::PARAM_INT);
-    $stmt->bindValue(2, (int)$offset, PDO::PARAM_INT);
     $stmt->execute();
     $announcements = $stmt->fetchAll();
     
