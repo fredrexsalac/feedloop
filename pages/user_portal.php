@@ -53,10 +53,8 @@ try {
     
     if ($is_logged_in && $user_id > 0) {
         $dismissed_clause = " AND cf.form_id NOT IN (
-            SELECT form_id FROM user_dismissed_announcements WHERE user_id = ?
+            SELECT form_id FROM user_dismissed_announcements WHERE user_id = :dismiss_user
         )";
-        $count_params = [$user_id];
-        $query_params = [$user_id];
     }
     
     // Get total count for pagination
@@ -68,13 +66,13 @@ try {
         AND cf.visibility IN ('public', 'department')
         $dismissed_clause
     ");
-    $stmt->execute($count_params);
+    if ($is_logged_in && $user_id > 0) {
+        $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+    }
+    $stmt->execute();
     $total_announcements = $stmt->fetchColumn();
     
     // Get announcements with admin details
-    $query_params[] = $limit;
-    $query_params[] = $offset;
-    
     $stmt = $pdo->prepare("
         SELECT 
             cf.form_id,
@@ -102,7 +100,12 @@ try {
         ORDER BY cf.updated_at DESC, cf.created_at DESC
         LIMIT ? OFFSET ?
     ");
-    $stmt->execute($query_params);
+    if ($is_logged_in && $user_id > 0) {
+        $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+    }
+    $stmt->bindValue(1, (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(2, (int)$offset, PDO::PARAM_INT);
+    $stmt->execute();
     $announcements = $stmt->fetchAll();
     
 } catch (Exception $e) {
