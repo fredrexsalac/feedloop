@@ -96,3 +96,4 @@ The `feedloop_db.sql` schema models classic feedback (`feedback_submissions`) al
 6. Test password reset flow to confirm SMTP or file logging fallback behavior.
 
 This research dossier should serve as a living reference for maintainers and researchers iterating on FeedLoop’s architecture. Future contributions should append empirical findings, performance benchmarks, and user studies to extend this knowledge base.
+# feedloop

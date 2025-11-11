@@ -376,3 +376,21 @@
 )
 
 [2025-11-11 05:00:05] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0
+[2025-11-11 05:41:36] Session data: Array
+(
+    [user_id] => 13
+    [username] => fredrexsalac
+    [role] => admin
+    [email] => fredrexsalac@gmail.com
+    [last_activity] => 1762835951
+    [login_time] => 1762788818
+    [session_token] => 4a62b01f944f6b0db1d3966982e35e92ece3a89bc0431dea0ed8747b988acda6
+    [admin_id] => 6
+    [full_name] => Fredrex Salac
+    [position] => Admin
+    [login_success] => 1
+    [login_redirect] => dashboard_admin/admin_dashboard.php
+    [login_user_type] => Admin
+)
+
+[2025-11-11 05:41:36] User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 OPR/123.0.0.0

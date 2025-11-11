@@ -42,8 +42,8 @@ if ($is_logged_in && $user_id > 0) {
 $announcements = [];
 $total_announcements = 0;
 $page = $_GET['page'] ?? 1;
-$limit = 6; // Show 6 announcements per page
-$offset = ($page - 1) * $limit;
+$limit = max(1, (int)6); // Show 6 announcements per page
+$offset = max(0, ($page - 1) * $limit);
 
 try {
     // Build WHERE clause to exclude dismissed announcements for logged-in users
@@ -53,10 +53,8 @@ try {
     
     if ($is_logged_in && $user_id > 0) {
         $dismissed_clause = " AND cf.form_id NOT IN (
-            SELECT form_id FROM user_dismissed_announcements WHERE user_id = ?
+            SELECT form_id FROM user_dismissed_announcements WHERE user_id = :dismiss_user
         )";
-        $count_params = [$user_id];
-        $query_params = [$user_id];
     }
     
     // Get total count for pagination
@@ -68,43 +66,73 @@ try {
         AND cf.visibility IN ('public', 'department')
         $dismissed_clause
     ");
-    $stmt->execute($count_params);
+    if ($is_logged_in && $user_id > 0) {
+        $stmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+    }
+    $stmt->execute();
     $total_announcements = $stmt->fetchColumn();
     
-    // Get announcements with admin details
-    $query_params[] = $limit;
-    $query_params[] = $offset;
-    
-    $stmt = $pdo->prepare("
-        SELECT 
-            cf.form_id,
-            cf.title,
-            cf.description,
-            cf.created_at,
-            cf.updated_at,
-            CASE 
-                WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
-                WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
-                WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
-                ELSE 'announcement'
-            END as form_type,
-            cf.max_responses,
-            u.username as admin_username,
-            COALESCE(a.full_name, u.username) as admin_name,
-            a.position as admin_position,
-            cf.response_count
+    // Get paginated list of form IDs first to satisfy ONLY_FULL_GROUP_BY
+    $formsStmt = $pdo->prepare("
+        SELECT cf.form_id
         FROM custom_forms cf
-        JOIN users u ON cf.created_by = u.user_id
-        LEFT JOIN admins a ON u.user_id = a.user_id
-        WHERE cf.is_active = 1 
-        AND cf.visibility IN ('public', 'department')
-        $dismissed_clause
+        WHERE cf.is_active = 1
+          AND cf.visibility IN ('public', 'department')
+          $dismissed_clause
         ORDER BY cf.updated_at DESC, cf.created_at DESC
-        LIMIT ? OFFSET ?
+        LIMIT :limit OFFSET :offset
     ");
-    $stmt->execute($query_params);
-    $announcements = $stmt->fetchAll();
-    
+    if ($is_logged_in && $user_id > 0) {
+        $formsStmt->bindValue(':dismiss_user', (int)$user_id, PDO::PARAM_INT);
+    }
+    $formsStmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $formsStmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+    $formsStmt->execute();
+    $formIds = array_column($formsStmt->fetchAll(PDO::FETCH_ASSOC), 'form_id');
+
+    if (!empty($formIds)) {
+        $placeholders = implode(',', array_fill(0, count($formIds), '?'));
+        $detailsStmt = $pdo->prepare("
+            SELECT
+                cf.form_id,
+                cf.title,
+                cf.form_code,
+                cf.description,
+                cf.created_at,
+                cf.updated_at,
+                CASE 
+                    WHEN cf.description LIKE '%survey%' OR cf.title LIKE '%survey%' THEN 'survey'
+                    WHEN cf.description LIKE '%feedback%' OR cf.title LIKE '%feedback%' THEN 'feedback'
+                    WHEN cf.description LIKE '%event%' OR cf.title LIKE '%event%' THEN 'event'
+                    ELSE 'announcement'
+                END as form_type,
+                cf.max_responses,
+                u.username as admin_username,
+                COALESCE(a.full_name, u.username) as admin_name,
+                a.position as admin_position,
+                cf.response_count
+            FROM custom_forms cf
+            JOIN users u ON cf.created_by = u.user_id
+            LEFT JOIN admins a ON u.user_id = a.user_id
+            WHERE cf.form_id IN ($placeholders)
+            ORDER BY FIELD(cf.form_id, $placeholders)
+        ");
+
+        // Bind IDs twice (for IN clause and ORDER BY FIELD)
+        $paramIndex = 1;
+        foreach ($formIds as $id) {
+            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
+        }
+        foreach ($formIds as $id) {
+            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
+        }
+
+        $detailsStmt->execute();
+        $announcements = $detailsStmt->fetchAll();
+    } else {
+        $announcements = [];
+    }
+
 } catch (Exception $e) {
     $error_message = "Error loading announcements: " . $e->getMessage();
     $total_announcements = 0;
@@ -411,9 +439,15 @@ $total_pages = ceil($total_announcements / $limit);
                                 </button>
                                 
                                 <?php if (in_array($announcement['form_type'], ['survey', 'feedback'])): ?>
-                                <button class="btn btn-outline-success btn-sm" onclick="participateInForm(<?php echo $announcement['form_id']; ?>)">
+                                    <?php if (!empty($announcement['form_code'])): ?>
+                                <button class="btn btn-outline-success btn-sm" onclick="participateInForm(<?php echo (int)$announcement['form_id']; ?>, <?php echo json_encode($announcement['form_code']); ?>)">
                                     <i class="fas fa-hand-point-right me-1"></i>Participate
                                 </button>
+                                    <?php else: ?>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="alert('This form is missing its public link. Please contact an administrator.'); return false;">
+                                    <i class="fas fa-info-circle me-1"></i>Link Missing
+                                </button>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>

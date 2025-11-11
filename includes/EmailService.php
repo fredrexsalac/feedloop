@@ -279,9 +279,6 @@ class EmailService {
         </html>";
     }
     
-    /**
-     * Plain text email template for password reset
-     */
     private function getResetEmailTextTemplate($username, $resetCode) {
         return "
 Password Reset Request - FeedLoop
