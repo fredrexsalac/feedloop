@@ -1,4 +1,4 @@
 [web]
 document-root = "/app"
 auto-install = false
-start = "php -S 0.0.0.0:8000 -t /app"
+start = "php -S 0.0.0.0:8000 -t /app /app/router.php"
