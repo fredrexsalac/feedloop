@@ -1,22 +1,20 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'feedloop_db';
-$username = 'root';
-$password = '';
+$host = 'db.fr-pari1.bengt.wasmernet.com';
+$port = '10272'; // include port if not default 3306
+$db   = 'feedloop_db';
+$user = '2c0c684b76ea80000e258d41570e';
+$pass = '06912c0c-684b-78e3-8000-d52defb57ed3';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
 
 try {
-    // Create PDO connection
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    
-    // Set PDO attributes
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    
+    $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    // Log error and show user-friendly message
-    error_log("Database connection error: " . $e->getMessage());
-    die("Database connection failed. Please check your configuration.");
+    die("Database configuration failed: " . $e->getMessage());
 }
 ?>
