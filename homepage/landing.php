@@ -87,7 +87,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FeedLoop - Modern Feedback Management System</title>
-    <link rel="icon" type="image/png" href="assets/img/logo/feedloop.jpg">
+    <link rel="icon" type="image/png" href="assets/img/logo/logo.jpg">
     <link href="assets/css/homepage/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/homepage/style.css">
@@ -478,7 +478,7 @@ try {
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#home">
-                <img src="assets/img/logo/feedloop.jpg" alt="FeedLoop" width="40" height="40" class="rounded-circle me-2">
+                <img src="assets/img/logo/logo.jpg" alt="FeedLoop" width="40" height="40" class="rounded-circle me-2">
                 <span class="fw-bold text-primary">FeedLoop</span>
             </a>
             
@@ -539,7 +539,7 @@ try {
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        <img src="assets/img/logo/feedloop.jpg" alt="FeedLoop" width="120" height="120" 
+                        <img src="assets/img/logo/logo.jpg" alt="FeedLoop" width="120" height="120" 
                              class="d-block mx-auto mb-4 rounded-circle logo-with-border">
                         <h1 class="display-4 fw-bold mb-3">Welcome to FeedLoop</h1>
                         <p class="lead mb-4">Your modern, secure, and efficient feedback management system</p>
@@ -653,7 +653,7 @@ try {
                     <a href="#faq" class="btn btn-primary btn-lg">Learn More</a>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="assets/img/logo/feedloop.jpg" alt="FeedLoop" class="img-fluid rounded-circle shadow-lg" style="max-width: 300px;">
+                    <img src="assets/img/logo/logo.jpg" alt="FeedLoop" class="img-fluid rounded-circle shadow-lg" style="max-width: 300px;">
                 </div>
             </div>
         </div>
@@ -841,7 +841,7 @@ try {
             <div class="row">
                 <div class="col-lg-6">
                     <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/logo/feedloop.jpg" alt="FeedLoop" width="40" height="40" class="rounded-circle me-2">
+                        <img src="assets/img/logo/logo.jpg" alt="FeedLoop" width="40" height="40" class="rounded-circle me-2">
                         <span class="h5 mb-0 text-white">FeedLoop</span>
                     </div>
                     <p class="text-light">Modern feedback management system designed for Philippine educational institutions. Secure, efficient, and user-friendly.</p>

@@ -38,7 +38,7 @@ function initializeRegularAdminSettings() {
                         theme_mode: document.getElementById('themeMode').value
                     };
                     
-                    const response = await fetch('/feedloop/admin/api/save_settings.php', {
+                    const response = await fetch('/admin/api/save_settings.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(formData)

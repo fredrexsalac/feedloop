@@ -92,7 +92,7 @@ try {
     
     // Generate shareable link (force HTTPS)
     $base_url = 'https://' . $_SERVER['HTTP_HOST'];
-    $shareable_link = $base_url . '/feedloop/public/form/' . $form_code;
+    $shareable_link = $base_url . '/public/form/' . $form_code;
     
     // Start transaction
     $pdo->beginTransaction();

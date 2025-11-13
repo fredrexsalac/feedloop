@@ -117,8 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-card">
             <!-- Logo with dynamic border -->
             <div class="logo-container">
-                <div class="logo-border" id="logoBorder">
-                    <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+                <div class="logo-container">
+                <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" class="logo">
                 </div>
             </div>
             

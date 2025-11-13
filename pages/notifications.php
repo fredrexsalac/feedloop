@@ -128,7 +128,7 @@ if (isset($_GET['mark_read']) && is_numeric($_GET['mark_read'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="../index.php">
-                <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop" height="40" class="me-2">
+                <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" height="40" class="me-2">
                 <span class="fw-bold text-primary">FeedLoop</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

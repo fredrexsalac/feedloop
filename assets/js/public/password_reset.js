@@ -19,7 +19,7 @@ class PasswordReset {
     // Helper function to get correct API path
     getApiPath(endpoint) {
         // Use absolute path from root for reliability
-        return `/feedloop/api/password_reset/${endpoint}`;
+        return `/api/password_reset/${endpoint}`;
     }
     
     initializeEventListeners() {
@@ -191,7 +191,7 @@ class PasswordReset {
                 
                 // Redirect to login after 3 seconds
                 setTimeout(() => {
-                    window.location.href = data.redirect || '/feedloop/login.php';
+                    window.location.href = data.redirect || '/login.php';
                 }, 3000);
             } else {
                 this.showAlert(data.message, 'danger');

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadNotifications() {
-    fetch('/feedloop/api/get_notifications.php')
+    fetch('/api/get_notifications.php')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -57,7 +57,7 @@ function updateNotificationDropdown(notifications) {
         notifications.forEach(notification => {
             const item = document.createElement('a');
             item.className = `dropdown-item notification-item ${notification.is_read ? 'read' : 'unread'}`;
-            item.href = `/feedloop/feedback/?view=${notification.feedback_id}`;
+            item.href = `/feedback/?view=${notification.feedback_id}`;
             
             const date = new Date(notification.created_at);
             const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -83,5 +83,5 @@ function updateNotificationDropdown(notifications) {
 }
 
 function markAsRead(notificationId) {
-    window.location.href = `/feedloop/notifications.php?mark_read=${notificationId}`;
+    window.location.href = `/notifications.php?mark_read=${notificationId}`;
 }

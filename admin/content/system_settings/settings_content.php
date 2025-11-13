@@ -614,7 +614,7 @@ async function handleAddStudent() {
             phone_number: formData.get('phone_number')
         };
         
-        const response = await fetch('/feedloop/admin/api/add_student.php', {
+        const response = await fetch('/admin/api/add_student.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(studentData)
@@ -660,7 +660,7 @@ async function handleExportGeneration() {
             include_charts: document.getElementById('includeCharts').checked
         };
         
-        const response = await fetch('/feedloop/admin/api/export_students.php', {
+        const response = await fetch('/admin/api/export_students.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(exportData)

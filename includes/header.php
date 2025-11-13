@@ -84,7 +84,7 @@ if (strpos($_SERVER['PHP_SELF'], '/homepage/') !== false) {
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="background-color: var(--bs-body-bg, #fff) !important;">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="<?php echo $base_path; ?>index.php">
-      <img src="<?php echo $base_path; ?>assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo-with-border me-2" style="width: 32px; height: 32px;">
+      <img src="<?php echo $base_path; ?>assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo-with-border me-2" style="width: 32px; height: 32px;">
       <span class="text-primary">FeedLoop</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarFeedloop" aria-controls="navbarFeedloop" aria-expanded="false" aria-label="Toggle navigation">

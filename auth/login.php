@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="login-card">
         <div class="logo-container">
-            <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+            <img src="../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
         </div>
         
         <h1 class="login-title">Welcome Back</h1>

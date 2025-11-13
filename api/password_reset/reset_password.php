@@ -158,7 +158,7 @@ try {
         echo json_encode([
             'success' => true,
             'message' => 'Password reset successfully! You can now log in with your new password.',
-            'redirect' => '/feedloop/login.php'
+            'redirect' => '/login.php'
         ]);
         
     } catch (Exception $e) {

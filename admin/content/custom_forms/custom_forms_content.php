@@ -406,10 +406,10 @@ $avg_completion_rate = $total_forms > 0 ? array_sum(array_column($user_forms, 'c
 </div>
 
 <!-- Include Custom Forms JavaScript -->
-<script src="/feedloop/assets/js/admin/custom_forms.js?v=<?php echo time(); ?>"></script>
+<script src="/assets/js/admin/custom_forms.js?v=<?php echo time(); ?>"></script>
 
 <!-- Include CSS for Custom Forms -->
-<link rel="stylesheet" href="/feedloop/assets/css/admin/custom_forms.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="/assets/css/admin/custom_forms.css?v=<?php echo time(); ?>">
 
 <!-- Include jsPDF and Chart.js for PDF generation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

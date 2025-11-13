@@ -27,6 +27,6 @@ if (strpos($_SERVER['PHP_SELF'], '/homepage/') !== false) {
 }
 ?>
 <!-- FeedLoop Favicon -->
-<link rel="icon" type="image/jpeg" href="<?php echo $favicon_base_path; ?>assets/img/logo/feedloop.jpg">
-<link rel="shortcut icon" type="image/jpeg" href="<?php echo $favicon_base_path; ?>assets/img/logo/feedloop.jpg">
-<link rel="apple-touch-icon" href="<?php echo $favicon_base_path; ?>assets/img/logo/feedloop.jpg">
+<link rel="icon" type="image/jpeg" href="<?php echo $favicon_base_path; ?>assets/img/logo/logo.jpg">
+<link rel="shortcut icon" type="image/jpeg" href="<?php echo $favicon_base_path; ?>assets/img/logo/logo.jpg">
+<link rel="apple-touch-icon" href="<?php echo $favicon_base_path; ?>assets/img/logo/logo.jpg">

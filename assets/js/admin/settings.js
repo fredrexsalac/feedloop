@@ -11,28 +11,8 @@
 
 // Function to get correct API path based on current location
 function getApiPath(endpoint) {
-    const currentPath = window.location.pathname;
-    console.log('getApiPath - Current path:', currentPath);
-    
-    // Extract the base path (e.g., "/feedloop/")
-    const pathParts = currentPath.split('/');
-    let basePath = '';
-    
-    // Find the feedloop part in the path
-    const feedloopIndex = pathParts.indexOf('feedloop');
-    console.log('getApiPath - Feedloop index:', feedloopIndex);
-    
-    if (feedloopIndex !== -1) {
-        basePath = pathParts.slice(0, feedloopIndex + 1).join('/');
-    } else {
-        // Fallback: assume we're in feedloop directory
-        basePath = '/feedloop';
-    }
-    
-    // Create absolute path from web root
-    const apiPath = `${basePath}/admin/api/${endpoint}`;
+    const apiPath = `/admin/api/${endpoint}`;
     console.log('getApiPath - Final API path:', apiPath);
-    
     return apiPath;
 }
 

@@ -26,7 +26,7 @@
         
         <!-- Logo at Top Center -->
         <div class="text-center mb-4">
-          <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop" width="120" height="120" class="rounded-circle shadow-sm">
+          <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" width="120" height="120" class="rounded-circle shadow-sm">
         </div>
         <h5 class="fw-semibold mb-2 text-primary">📖 Definition</h5>
         <p>

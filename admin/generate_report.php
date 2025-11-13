@@ -182,7 +182,7 @@ if ($format === 'pdf') {
 <body>
     <div class="header">
         <?php
-        $logoPath = '../../assets/img/logo/feedloop.jpg';
+        $logoPath = '../../assets/img/logo/logo.jpg';
         if (file_exists($logoPath)) {
             $logoData = base64_encode(file_get_contents($logoPath));
             $logoMime = mime_content_type($logoPath);

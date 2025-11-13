@@ -24,7 +24,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == '1') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FeedLoop - Home</title>
-  <link rel="icon" type="image/png" href="../assets/img/logo/feedloop.jpg">
+  <link rel="icon" type="image/png" href="../assets/img/logo/logo.jpg">
   <link rel="stylesheet" href="../assets/css/homepage/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/homepage/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -60,7 +60,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == '1') {
 
   <!-- Hero Section -->
   <div class="container hero-section">
-    <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop" width="120" height="120" class="d-block mx-auto mb-3 rounded-circle shadow-sm logo-with-border">
+    <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" width="120" height="120" class="d-block mx-auto mb-3 rounded-circle shadow-sm logo-with-border">
     <h1 class="display-5 fw-bold text-primary mb-3">Welcome to FeedLoop</h1>
     <p class="lead mb-4 text-secondary">Your trusted platform for feedback, announcements, and collaboration.</p>
     <a href="../pages/user_portal.php" class="btn btn-primary btn-lg px-4 me-2">View Announcements</a>
@@ -113,7 +113,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == '1') {
           <div class="card shadow-lg">
             <div class="card-body">
               <div class="text-center mb-4">
-                <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop" width="80" height="80" class="rounded-circle shadow-sm logo-with-border">
+                <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" width="80" height="80" class="rounded-circle shadow-sm logo-with-border">
               </div>
               <h5 class="fw-semibold mb-2 text-primary">📖 Definition</h5>
               <p>

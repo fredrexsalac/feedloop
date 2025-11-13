@@ -115,20 +115,27 @@ try {
             JOIN users u ON cf.created_by = u.user_id
             LEFT JOIN admins a ON u.user_id = a.user_id
             WHERE cf.form_id IN ($placeholders)
-            ORDER BY FIELD(cf.form_id, $placeholders)
         ");
 
-        // Bind IDs twice (for IN clause and ORDER BY FIELD)
+        // Bind IDs for IN clause
         $paramIndex = 1;
-        foreach ($formIds as $id) {
-            $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
-        }
         foreach ($formIds as $id) {
             $detailsStmt->bindValue($paramIndex++, (int)$id, PDO::PARAM_INT);
         }
 
         $detailsStmt->execute();
-        $announcements = $detailsStmt->fetchAll();
+        $fetched = $detailsStmt->fetchAll();
+        // Reorder to match pagination order
+        $indexed = [];
+        foreach ($fetched as $row) {
+            $indexed[$row['form_id']] = $row;
+        }
+        $announcements = [];
+        foreach ($formIds as $id) {
+            if (isset($indexed[$id])) {
+                $announcements[] = $indexed[$id];
+            }
+        }
     } else {
         $announcements = [];
     }
@@ -164,7 +171,7 @@ $total_pages = ceil($total_announcements / $limit);
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="../index.php">
-                <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop" height="40" class="me-2">
+                <img src="../assets/img/logo/logo.jpg" alt="FeedLoop" height="40" class="me-2">
                 <span class="fw-bold text-primary">FeedLoop</span>
             </a>
             

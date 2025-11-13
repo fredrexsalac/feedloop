@@ -108,7 +108,7 @@ $stats = $stats_stmt->fetch();
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo-container">
-                <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+                <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
             </div>
             <ul class="sidebar-menu">
                 <li><a href="dashboard.php">Dashboard</a></li>

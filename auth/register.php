@@ -77,7 +77,7 @@ require '../db.php';
 <body>
     <div class="register-card">
         <div class="logo-container">
-            <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+            <img src="../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
         </div>
         
         <h1 class="register-title">Create Your Account</h1>

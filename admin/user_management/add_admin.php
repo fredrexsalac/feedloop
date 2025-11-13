@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <!-- Logo at Top -->
         <div class="text-center mb-4 mt-3">
-            <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo" style="max-width: 200px; height: auto;">
+            <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo" style="max-width: 200px; height: auto;">
         </div>
         <h1 class="mt-3">Add New Admin</h1>
         

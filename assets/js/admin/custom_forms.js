@@ -1085,7 +1085,7 @@ async function generateFormReport(formId) {
         showNotification('info', 'Generating comprehensive report...');
         
         // Fetch report data
-        const response = await fetch(`/feedloop/admin/api/custom_forms/get_form_report_data.php?form_id=${formId}`);
+        const response = await fetch(`/admin/api/custom_forms/get_form_report_data.php?form_id=${formId}`);
         const result = await response.json();
         
         if (!result.success) {
@@ -1124,7 +1124,7 @@ async function generateReportPreview(data) {
         <div class="report-page" style="background: white; max-width: 210mm; margin: 20px auto; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
             <!-- Cover Page -->
             <div class="report-cover text-center" style="min-height: 297mm; display: flex; flex-direction: column; justify-content: center; padding: 60px 0;">
-                <img src="/feedloop/assets/img/logo/feedloop.jpg" alt="FeedLoop" style="max-width: 200px; margin: 0 auto 40px;">
+                <img src="/assets/img/logo/logo.jpg" alt="FeedLoop" style="max-width: 200px; margin: 0 auto 40px;">
                 <h1 style="color: #fd7e14; font-size: 42px; font-weight: bold; margin-bottom: 20px;">Form Results Report</h1>
                 <h2 style="color: #333; font-size: 28px; margin-bottom: 40px;">${data.form.title}</h2>
                 <div style="border-top: 3px solid #fd7e14; border-bottom: 3px solid #fd7e14; padding: 30px 0; margin: 40px 0;">

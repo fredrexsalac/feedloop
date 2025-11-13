@@ -103,7 +103,7 @@ class EmailSystem {
      * Send password reset email
      */
     public function sendPasswordReset($email, $reset_token, $user_type = 'user') {
-        $reset_link = "http://" . $_SERVER['HTTP_HOST'] . "/feedloop/login/reset_password.php?token={$reset_token}&type={$user_type}";
+        $reset_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/reset_password.php?token={$reset_token}&type={$user_type}";
         
         $subject = "FeedLoop - Password Reset Request";
         $body = $this->getPasswordResetTemplate($reset_link, $user_type);
@@ -326,7 +326,7 @@ class EmailSystem {
                         <li>Update your profile information</li>
                     </ul>
                     
-                    <p><a href='http://" . $_SERVER['HTTP_HOST'] . "/feedloop/' class='button'>Access FeedLoop</a></p>
+                    <p><a href='http://" . $_SERVER['HTTP_HOST'] . "/' class='button'>Access FeedLoop</a></p>
                     
                     <p>If you have any questions or need assistance, please don't hesitate to contact our support team.</p>
                 </div>
@@ -372,7 +372,7 @@ class EmailSystem {
                     
                     <p>A new feedback submission has been received and requires your attention. Please review and respond promptly.</p>
                     
-                    <p><a href='http://" . $_SERVER['HTTP_HOST'] . "/feedloop/admin/' class='button'>Review Feedback</a></p>
+                    <p><a href='http://" . $_SERVER['HTTP_HOST'] . "/admin/' class='button'>Review Feedback</a></p>
                 </div>
                 <div class='footer'>
                     <p>This is an automated message from FeedLoop System.<br>

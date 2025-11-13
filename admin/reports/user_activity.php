@@ -507,7 +507,7 @@ function formatDuration($start, $end) {
 
             // Add logo (you'll need to replace this with your actual logo path)
             try {
-                const logoUrl = '../../assets/img/logo/feedloop.jpg';
+                const logoUrl = '../../assets/img/logo/logo.jpg';
                 const logoResponse = await fetch(logoUrl);
                 const logoBlob = await logoResponse.blob();
                 const logoDataUrl = await new Promise((resolve) => {

@@ -13,7 +13,7 @@ return [
     // Get these from: https://console.cloud.google.com/apis/credentials
     'client_id' => '1027762356669-uhv48ghj3g86c6d2150bts2tfajeu2qr.apps.googleusercontent.com',
     'client_secret' => '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',
-    'redirect_uri' => 'http://localhost/feedloop/auth/google_callback.php', // Change in production
+    'redirect_uri' => 'http://localhost/auth/google_callback.php', // Change in production
     
     // OAuth Endpoints
     'auth_url' => 'https://accounts.google.com/o/oauth2/v2/auth',
@@ -38,8 +38,8 @@ return [
      * 4. Go to "Credentials" → "Create Credentials" → "OAuth 2.0 Client ID"
      * 5. Application type: "Web application"
      * 6. Authorized redirect URIs: 
-     *    - Development: http://localhost/feedloop/auth/google_callback.php
-     *    - Production: https://yourdomain.com/feedloop/auth/google_callback.php
+     *    - Development: http://localhost/auth/google_callback.php
+     *    - Production: https://yourdomain.com/auth/google_callback.php
      * 7. Copy Client ID and Client Secret above
      * 8. Set 'enabled' to true
      * 

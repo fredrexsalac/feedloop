@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Logo with Super Admin styling -->
             <div class="logo-container">
                 <div class="logo-border">
-                    <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo super-admin-logo">
+                    <img src="../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo super-admin-logo">
                 </div>
             </div>
             

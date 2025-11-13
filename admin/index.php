@@ -117,7 +117,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
 <body>
     <div class="access-container">
         <div class="logo-container">
-            <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+            <img src="../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
         </div>
         
         <h1 class="access-title">🔐 Admin Access Portal</h1>

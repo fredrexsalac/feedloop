@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['reset_password'])) {
     <div class="login-card">
         <!-- Logo at Top Center -->
         <div class="logo-container">
-            <img src="../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+            <img src="../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
         </div>
         
         <h1 class="form-title"><?php echo $role_title; ?> Password Reset</h1>

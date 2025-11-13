@@ -28,7 +28,7 @@ class EmailService {
      * Get FeedLoop logo as base64 for email embedding
      */
     private function getLogoBase64() {
-        $logoPath = __DIR__ . '/../assets/img/logo/feedloop.jpg';
+        $logoPath = __DIR__ . '/../assets/img/logo/logo.jpg';
         if (file_exists($logoPath)) {
             $imageData = base64_encode(file_get_contents($logoPath));
             return "data:image/jpeg;base64,{$imageData}";

@@ -73,7 +73,7 @@ try {
     $new_title = $original_form['title'] . ' (Copy)';
     // Force HTTPS for shareable links
     $base_url = 'https://' . $_SERVER['HTTP_HOST'];
-    $new_shareable_link = $base_url . '/feedloop/public/form/' . $new_form_code;
+    $new_shareable_link = $base_url . '/public/form/' . $new_form_code;
     
     $stmt = $pdo->prepare("
         INSERT INTO custom_forms (

@@ -162,7 +162,7 @@ try {
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="logo-container">
-                <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
+                <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
             </div>
             <!-- FeedLoop v2.0: Streamlined Admin Menu -->
             <ul class="sidebar-menu">
@@ -182,7 +182,7 @@ try {
                 <div class="dashboard-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h1 class="d-flex align-items-center">
-                            <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop" width="36" height="36" class="me-2 rounded" style="object-fit: cover;">
+                            <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop" width="36" height="36" class="me-2 rounded" style="object-fit: cover;">
                             Admin Dashboard
                         </h1>
                         <div class="btn-group">
@@ -470,7 +470,7 @@ try {
                         // Build preview HTML
                         const previewHTML = `
                             <div class="preview-header text-center">
-                                <img src="../../assets/img/logo/feedloop.jpg" class="preview-logo mb-3" alt="FeedLoop Logo">
+                                <img src="../../assets/img/logo/logo.jpg" class="preview-logo mb-3" alt="FeedLoop Logo">
                                 <h2 class="preview-title">FeedLoop System Report</h2>
                                 <p class="preview-subtitle">Admin Dashboard Summary | Generated: ${new Date().toLocaleString()}</p>
                             </div>
@@ -567,7 +567,7 @@ try {
 
                     try {
                         // Add logo
-                        const logoUrl = '../../assets/img/logo/feedloop.jpg';
+                        const logoUrl = '../../assets/img/logo/logo.jpg';
                         const logoResponse = await fetch(logoUrl);
                         const logoBlob = await logoResponse.blob();
                         const logoDataUrl = await new Promise((resolve) => {
