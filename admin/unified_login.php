@@ -261,6 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="login-links">
                 <p><a href="forgot_password.php">Forgot Password?</a></p>
+                <p><a href="register.php">Register an Admin Account</a></p>
                 <p><a href="../">← Back to Homepage</a></p>
             </div>
         </div>
