@@ -520,15 +520,32 @@ function collectQuestions() {
 /**
  * Get API path with proper base URL detection
  */
+function detectBasePath() {
+    const path = window.location.pathname || '';
+    if (path.startsWith('/feedloop/')) {
+        return '/feedloop';
+    }
+    return '';
+}
+
+const BASE_PATH = detectBasePath();
+
+function buildPath(relativePath) {
+    if (!relativePath.startsWith('/')) {
+        relativePath = `/${relativePath}`;
+    }
+    return `${BASE_PATH}${relativePath}`;
+}
+
 function getApiPath(endpoint) {
-    return `/admin/api/custom_forms/${endpoint}`;
+    return buildPath(`admin/api/custom_forms/${endpoint}`);
 }
 
 /**
  * Get content path with proper base URL detection
  */
 function getContentPath(page) {
-    return `/admin/content/custom_forms/${page}`;
+    return buildPath(`admin/content/custom_forms/${page}`);
 }
 
 /**

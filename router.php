@@ -8,6 +8,12 @@ $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 // Normalize double slashes
 $uri = preg_replace('#/+#', '/', $uri);
 
+// Ensure /admin and /admin/ resolve to unified login entry point
+if ($uri === '/admin' || $uri === '/admin/') {
+    require $root . '/admin/unified_login.php';
+    return true;
+}
+
 // Serve existing files directly
 $requestedPath = $root . $uri;
 if ($uri !== '/' && file_exists($requestedPath) && !is_dir($requestedPath)) {

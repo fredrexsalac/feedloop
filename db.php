@@ -1,9 +1,9 @@
 <?php
 $host = 'db.fr-pari1.bengt.wasmernet.com';
 $port = '10272'; // include port if not default 3306
-$db   = 'feedloop_db';
-$user = '2c0c684b76ea80000e258d41570e';
-$pass = '06912c0c-684b-78e3-8000-d52defb57ed3';
+$db   = 'feedloop';
+$user = '87bf77927fb38000e7d770499d79';
+$pass = '069187bf-7793-728f-8000-612369950f59';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
