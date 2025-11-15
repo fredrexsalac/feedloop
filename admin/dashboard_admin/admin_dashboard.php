@@ -162,7 +162,7 @@ try {
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="logo-container">
-                <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop Logo" class="logo">
+                <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop Logo" class="logo">
             </div>
             <!-- FeedLoop v2.0: Streamlined Admin Menu -->
             <ul class="sidebar-menu">
@@ -182,7 +182,7 @@ try {
                 <div class="dashboard-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h1 class="d-flex align-items-center">
-                            <img src="../../assets/img/logo/logo.jpg" alt="FeedLoop" width="36" height="36" class="me-2 rounded" style="object-fit: cover;">
+                            <img src="../../assets/img/logo/feedloop.jpg" alt="FeedLoop" width="36" height="36" class="me-2 rounded" style="object-fit: cover;">
                             Admin Dashboard
                         </h1>
                         <div class="btn-group">
