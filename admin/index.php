@@ -1,6 +1,10 @@
 <?php
-// Redirect to unified login
-header('Location: unified_login.php');
+// Redirect to unified login with directory-aware path handling
+$basePath = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+if ($basePath === '' || $basePath === '.') {
+    $basePath = '';
+}
+header('Location: ' . $basePath . '/unified_login.php');
 exit();
 
 // Security Questions Configuration - Randomized
