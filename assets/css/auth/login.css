@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
+    padding: 20px 16px;
     overflow-y: auto;
 }
 
@@ -28,7 +28,8 @@ body {
     padding: 40px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+    margin: 0 auto;
 }
 
 .logo-container {
@@ -140,9 +141,16 @@ body {
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
+    body {
+        padding: 16px 12px;
+        align-items: center;
+    }
+
     .login-card {
-        padding: 20px;
-        margin: 10px 0;
+        padding: 24px 20px;
+        margin: 10px auto;
+        max-width: 360px;
+        border-radius: 14px;
     }
     
     .logo {
@@ -158,6 +166,12 @@ body {
         font-size: 14px;
     }
     
+    .btn-login,
+    .btn-google {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
     .form-control {
         font-size: 16px; /* Prevents zoom on iOS */
     }
@@ -165,5 +179,34 @@ body {
     .btn-google {
         font-size: 15px;
         padding: 10px;
+    }
+    
+    .divider span {
+        padding: 0 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    body {
+        padding: 14px 8px;
+    }
+
+    .login-card {
+        padding: 18px 14px;
+        border-radius: 12px;
+        max-width: 300px;
+    }
+
+    .btn-login,
+    .btn-google {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 16px 10px;
     }
 }
