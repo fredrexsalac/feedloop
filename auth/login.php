@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
 
         <div class="login-links">
-            <p><a href="forgot_password.php">Forgot Password?</a></p>
+            <p><a href="password_reset.php">Forgot Password?</a></p>
             <p>Don't have an account? <a href="register.php">Register here</a></p>
             <p><a href="../index.php">← Back to Homepage</a></p>
         </div>
