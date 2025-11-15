@@ -521,32 +521,14 @@ function collectQuestions() {
  * Get API path with proper base URL detection
  */
 function getApiPath(endpoint) {
-    const currentPath = window.location.pathname;
-    const pathParts = currentPath.split('/');
-    const feedloopIndex = pathParts.indexOf('feedloop');
-    let basePath = '';
-    
-    if (feedloopIndex !== -1) {
-        basePath = pathParts.slice(0, feedloopIndex + 1).join('/');
-    }
-    
-    return `${basePath}/admin/api/custom_forms/${endpoint}`;
+    return `/admin/api/custom_forms/${endpoint}`;
 }
 
 /**
  * Get content path with proper base URL detection
  */
 function getContentPath(page) {
-    const currentPath = window.location.pathname;
-    const pathParts = currentPath.split('/');
-    const feedloopIndex = pathParts.indexOf('feedloop');
-    let basePath = '';
-    
-    if (feedloopIndex !== -1) {
-        basePath = pathParts.slice(0, feedloopIndex + 1).join('/');
-    }
-    
-    return `${basePath}/admin/content/custom_forms/${page}`;
+    return `/admin/content/custom_forms/${page}`;
 }
 
 /**
@@ -1085,7 +1067,7 @@ async function generateFormReport(formId) {
         showNotification('info', 'Generating comprehensive report...');
         
         // Fetch report data
-        const response = await fetch(`/admin/api/custom_forms/get_form_report_data.php?form_id=${formId}`);
+        const response = await fetch(getApiPath(`get_form_report_data.php?form_id=${formId}`));
         const result = await response.json();
         
         if (!result.success) {
