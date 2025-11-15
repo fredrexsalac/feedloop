@@ -42,7 +42,7 @@ return [
     ],
     
     // Settings
-    'enabled' => false, // Disabled by default (UI no longer offers Google Sign-In)
+    'enabled' => true, // Google Sign-In enabled for registered users
     
     /**
      * SETUP INSTRUCTIONS:
