@@ -114,39 +114,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </button>
         </form>
         
-        <!-- Divider -->
-        <div class="divider">
-            <span>OR</span>
-        </div>
-        
-        <!-- Google Sign-In Button -->
-        <?php
-        define('FEEDLOOP_SECURE', true);
-        $googleConfig = include '../config/google_oauth_config.php';
-        if ($googleConfig['enabled']):
-            $googleAuthUrl = $googleConfig['auth_url'] . '?' . http_build_query([
-                'client_id' => $googleConfig['client_id'],
-                'redirect_uri' => $googleConfig['redirect_uri'],
-                'response_type' => 'code',
-                'scope' => implode(' ', $googleConfig['scopes']),
-                'access_type' => 'online',
-                'prompt' => 'select_account'
-            ]);
-        ?>
-        <a href="<?php echo htmlspecialchars($googleAuthUrl); ?>" class="btn btn-google">
-            <i class="fab fa-google me-2"></i> Sign in with Google
-        </a>
-        <?php endif; ?>
-        
         <div class="login-links">
-            <p>Don't have an account? <a href="register.php">Create one here</a></p>
-            <p><a href="password_reset.php"><i class="fas fa-key me-1"></i>Forgot your password?</a></p>
+            <p><a href="forgot_password.php">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="register.php">Register here</a></p>
             <p><a href="../index.php">← Back to Homepage</a></p>
         </div>
     </div>
     
     <style>
-        .divider {
+        /* Force scrolling on mobile */
+        html, body {
+            height: auto !important;
+            min-height: 100vh;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
             display: flex;
             align-items: center;
             text-align: center;

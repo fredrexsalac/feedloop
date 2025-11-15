@@ -184,78 +184,11 @@ require '../db.php';
         </div>
         
         <!-- Divider -->
-        <div class="divider">
-            <span>OR</span>
-        </div>
-        
-        <!-- Google Sign-In Button -->
-        <?php
-        define('FEEDLOOP_SECURE', true);
-        $googleConfig = include '../config/google_oauth_config.php';
-        if ($googleConfig['enabled']):
-            $googleAuthUrl = $googleConfig['auth_url'] . '?' . http_build_query([
-                'client_id' => $googleConfig['client_id'],
-                'redirect_uri' => $googleConfig['redirect_uri'],
-                'response_type' => 'code',
-                'scope' => implode(' ', $googleConfig['scopes']),
-                'access_type' => 'online',
-                'prompt' => 'select_account'
-            ]);
-        ?>
-        <a href="<?php echo htmlspecialchars($googleAuthUrl); ?>" class="btn btn-google">
-            <i class="fab fa-google me-2"></i> Sign up with Google
-        </a>
-        <?php endif; ?>
-        
         <div class="register-links">
             <p>Already have an account? <a href="login.php">Login here</a></p>
             <p><a href="../index.php">← Back to Homepage</a></p>
         </div>
     </div>
-    
-    <style>
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #ddd;
-        }
-        .divider span {
-            padding: 0 10px;
-            color: #666;
-            font-size: 14px;
-        }
-        .btn-google {
-            width: 100%;
-            padding: 12px;
-            background: white;
-            color: #444;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        .btn-google:hover {
-            background: #f8f9fa;
-            border-color: #4285f4;
-            color: #4285f4;
-            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.2);
-        }
-        .btn-google i {
-            color: #4285f4;
-        }
-    </style>
     
     <script src="../assets/js/auth/register_otp.js"></script>
 </body>
