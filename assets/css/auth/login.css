@@ -81,9 +81,11 @@ body {
 .divider {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    margin: 20px 0;
-    color: rgba(255, 255, 255, 0.75);
+    margin: 20px auto;
+    max-width: 220px;
+    color: #666;
     font-weight: 500;
 }
 
@@ -91,7 +93,7 @@ body {
 .divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid #d9d9d9;
 }
 
 .divider span {
@@ -99,31 +101,32 @@ body {
 }
 
 .btn-google {
-    width: 100%;
-    padding: 12px;
-    background: #fff;
-    color: #444;
-    border: 2px solid #ddd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 28px;
+    background: transparent;
+    color: #4285f4;
+    border: 2px solid #4285f4;
     border-radius: 8px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     text-decoration: none;
-    display: block;
-    text-align: center;
-    margin-top: 10px;
+    margin: 0 auto 10px;
 }
 
 .btn-google:hover {
-    background: #f8f9fa;
-    border-color: #4285f4;
-    color: #4285f4;
-    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.2);
+    background: #4285f4;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(66, 133, 244, 0.25);
 }
 
 .btn-google i {
-    color: #4285f4;
+    color: inherit;
+    font-size: 18px;
 }
 
 .login-links a {
