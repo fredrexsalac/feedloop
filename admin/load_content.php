@@ -2,8 +2,10 @@
 session_start();
 require '../db.php';
 
-// Check if user is logged in and is an admin (any admin role)
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+// Check if user is logged in and has an admin-type role
+$role = $_SESSION['role'] ?? null;
+$isAdmin = in_array($role, ['admin', 'super_admin'], true);
+if (!isset($_SESSION['user_id']) || !$isAdmin) {
     http_response_code(403);
     echo '<div class="alert alert-danger">Access denied. Admin privileges required.</div>';
     exit();
