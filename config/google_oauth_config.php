@@ -21,7 +21,12 @@ if ($scriptDir === '' || $scriptDir === '.') {
     $scriptDir = '';
 }
 
-$detectedRedirect = sprintf('%s://%s%s/auth/google_callback.php', $scheme, $host, $scriptDir);
+$basePath = preg_replace('#/auth$#', '', $scriptDir);
+if ($basePath === '/') {
+    $basePath = '';
+}
+
+$detectedRedirect = sprintf('%s://%s%s/auth/google_callback.php', $scheme, $host, $basePath);
 
 return [
     // Google OAuth 2.0 Credentials
