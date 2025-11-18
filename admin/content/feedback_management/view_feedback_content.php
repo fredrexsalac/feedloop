@@ -30,7 +30,7 @@ try {
     // Get feedback with category filtering and anonymized data
     $category_filter = $_GET['category'] ?? 'all';
     $date_filter = $_GET['date_filter'] ?? 'all';
-    $page = $_GET['feedback_page'] ?? 1;
+    $page = isset($_GET['feedback_page']) ? max(1, (int)$_GET['feedback_page']) : 1;
     $limit = 10;
     $offset = ($page - 1) * $limit;
     
@@ -60,14 +60,12 @@ try {
     $where_clause = !empty($where_conditions) ? 'WHERE ' . implode(' AND ', $where_conditions) : '';
     
     // Select anonymized data only - no personal identifiers
+    $limitClause = " LIMIT " . (int)$limit . " OFFSET " . (int)$offset;
     $stmt = $pdo->prepare("SELECT submission_id, subject, message, feedback_category, created_at, admin_response, admin_response_date,
                           name, email, user_type
                           FROM feedback_submissions 
                           $where_clause
-                          ORDER BY created_at DESC 
-                          LIMIT ? OFFSET ?");
-    $params[] = $limit;
-    $params[] = $offset;
+                          ORDER BY created_at DESC" . $limitClause);
     $stmt->execute($params);
     $feedback_list = $stmt->fetchAll();
 
