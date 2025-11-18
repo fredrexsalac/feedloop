@@ -137,7 +137,7 @@ try {
     // Store session token (valid for 10 minutes for password reset)
     $stmt = $pdo->prepare("
         UPDATE password_reset_tokens 
-        SET reset_code = ?, expires_at = DATE_ADD(NOW(), INTERVAL 10 MINUTE)
+        SET session_token = ?, session_expires_at = DATE_ADD(NOW(), INTERVAL 10 MINUTE)
         WHERE id = ?
     ");
     $stmt->execute([$sessionToken, $resetRecord['id']]);

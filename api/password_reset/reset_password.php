@@ -62,9 +62,9 @@ try {
         SELECT prt.*, u.user_id, u.username, u.email, u.password
         FROM password_reset_tokens prt
         JOIN users u ON u.user_id = prt.user_id
-        WHERE prt.reset_code = ? 
+        WHERE prt.session_token = ? 
         AND prt.is_used = 0
-        AND prt.expires_at > NOW()
+        AND prt.session_expires_at > NOW()
     ");
     $stmt->execute([$sessionToken]);
     $resetRecord = $stmt->fetch();

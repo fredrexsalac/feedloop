@@ -51,7 +51,9 @@ try {
             `email` varchar(255) NOT NULL,
             `reset_token` varchar(255) NOT NULL,
             `reset_code` varchar(10) NOT NULL,
+            `session_token` varchar(255) DEFAULT NULL,
             `expires_at` datetime NOT NULL,
+            `session_expires_at` datetime DEFAULT NULL,
             `is_used` tinyint(1) DEFAULT 0,
             `attempts` int(11) DEFAULT 0,
             `max_attempts` int(11) DEFAULT 3,
@@ -62,11 +64,21 @@ try {
             PRIMARY KEY (`id`),
             KEY `idx_reset_token` (`reset_token`),
             KEY `idx_reset_code` (`reset_code`),
+            KEY `idx_session_token` (`session_token`),
             KEY `idx_email_expires` (`email`, `expires_at`),
             KEY `idx_user_id` (`user_id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     ");
     
+    // Ensure schema has session token columns for older deployments
+    try {
+        $pdo->exec("ALTER TABLE `password_reset_tokens` ADD COLUMN `session_token` varchar(255) DEFAULT NULL AFTER `reset_code`");
+    } catch (Exception $e) { /* column may already exist */ }
+
+    try {
+        $pdo->exec("ALTER TABLE `password_reset_tokens` ADD COLUMN `session_expires_at` datetime DEFAULT NULL AFTER `expires_at`");
+    } catch (Exception $e) { /* column may already exist */ }
+
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS `password_reset_attempts` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
