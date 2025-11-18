@@ -8,14 +8,14 @@
 
 ### Title Page
 
-**Project Title:** FeedLoop: A Unified Feedback and Announcement Platform for Academic Communities  \
+**Project Title:** FeedLoop: Academic Event and Feedback Management System  \
 **Authors:** [Insert Team Members Here]  \
 **Institution / Course:** PROF ELEC 2 / CS3114  \
 **Submission Date:** [Insert Date]
 
 ### Abstract
 
-FeedLoop addresses the persistent communication gap between academic administrators and students by consolidating feedback collection, announcements, and engagement tools within a responsive web platform. The project applies a user-centered design process grounded in Agile Scrum, integrating OTP-verified registration, secure session management, and Google OAuth sign-in for verified accounts. Data is stored in a structured MySQL repository, enabling real-time retrieval of announcements and analytics. The study employed iterative prototyping, usability walkthroughs, and cross-browser compatibility testing to refine both functionality and user experience. Results demonstrate substantial improvements in information accessibility, administrative efficiency, and user satisfaction, meeting all defined functional objectives while ensuring compliance with institutional deployment environments such as XAMPP and Wasmer. Conclusions affirm FeedLoop’s effectiveness in streamlining academic communication, and recommendations focus on extending notification automation, analytics dashboards, and mobile-first refinements to sustain engagement across larger constituencies.
+FeedLoop responds to the communication gaps surfaced during PROF ELEC 2 and CS3114 activities, where students, subject instructors, laboratory staff, parents, and alumni mentors exchange updates and feedback. The web portal keeps those stakeholders on a single channel for announcements, feedback tickets, and event notes. Development followed an Agile Scrum routine with weekly consultations, OTP-verified registration, and Google OAuth sign-in restricted to members pre-cleared by the instructors. Data resides in a MySQL store that supports real-time dashboards and downloadable reports. Iterative prototyping, hallway usability checks, and cross-browser runs helped verify that the login sequence, mobile views, and admin tools behave as expected both on XAMPP test rigs and the Wasmer deployment. The current build improves turnaround time for announcements and consolidates feedback into one report queue, setting the stage for targeted automation and analytics in the next revision.
 
 ### Table of Contents
 
@@ -45,29 +45,29 @@ FeedLoop addresses the persistent communication gap between academic administrat
 
 ### 1.1 Project Context and Introduction
 
-Academic institutions frequently rely on fragmented channels—email chains, social media posts, and printed bulletins—to disseminate announcements and gather student feedback. This fragmentation causes delays, information loss, and reduced student engagement. FeedLoop was conceived to unify these workflows into a single web application capable of hosting announcements, gathering structured feedback, and generating reports for academic administrators. By bridging the communication gap, the platform supports data-driven decision-making and improves transparency between stakeholders.
+During the joint delivery of PROF ELEC 2 and CS3114, updates about exercises, laboratory schedules, and internship briefings were spread across separate group chats, emails, and ad hoc spreadsheets. Students, faculty advisers, laboratory staff, and alumni speakers reported missed announcements and slow feedback follow-ups. FeedLoop consolidates those touchpoints into one portal, allowing participants to read announcements, send feedback, and monitor responses without hopping between tools. The project aims to anchor course-related coordination on a trackable, role-aware platform.
 
 ### 1.2 Statement of the Problem
 
-**General Problem:** How can academic stakeholders centralize feedback management and announcements in a secure, responsive, and easy-to-maintain platform?  
+**General Problem:** How can the PROF ELEC 2 and CS3114 teaching team keep course announcements and multi-role feedback in a secure, responsive, and maintainable portal?  
 **Specific Problems:**  
-1. Students lack a single interface to view announcements and submit feedback securely.  
-2. Administrators struggle to monitor feedback trends across departments due to siloed data.  
-3. Existing login flows are inconsistent, leading to user confusion and increased support overhead.  
+1. Students, teachers, and alumni mentors lacked a single interface to review course updates and submit feedback securely.  
+2. Coordinators had difficulty tracking feedback trends per activity because responses lived in separate sheets and forms.  
+3. The mixed OTP and Google sign-in flows confused new participants and created extra support work.  
 4. Deployment environments differ (XAMPP vs. Wasmer), causing asset path and routing inconsistencies.
 
 ### 1.3 Objectives of the Study
 
-1. Develop a role-based web application that enables students and administrators to share and act on feedback in real time.  
-2. Implement OTP-verified registration and Google OAuth sign-in limited to pre-registered emails to enhance security and convenience.  
-3. Design responsive user and admin interfaces optimized for desktop and mobile devices.  
-4. Produce administrative dashboards and exportable reports for monitoring user activity and feedback submissions.  
+1. Deliver a role-aware web application that lets students, instructors, staff, parents, and alumni exchange feedback tied to PROF ELEC 2 and CS3114 events.  
+2. Implement OTP-verified registration and Google OAuth sign-in limited to pre-approved course emails for consistent security.  
+3. Design responsive user and admin interfaces so announcements and tasks stay readable on laptops, tablets, and phones used during sessions.  
+4. Produce coordinator dashboards and exportable reports for monitoring activity volumes, response times, and user identification breakdowns.  
 5. Ensure consistent routing, asset management, and database connectivity across local (XAMPP) and cloud (Wasmer) deployments.
 
 ### 1.4 Scope and Delimitations
 
-- **Scope:** The system covers user registration, OTP verification, authenticated login (including Google sign-in), announcement viewing, feedback submission, administrative dashboards, notification management, and report generation.  
-- **Target Users:** Students, feedback managers, administrators, and super administrators within an academic institution.  
+- **Scope:** The system covers user registration, OTP verification, authenticated login (including Google sign-in), announcement viewing, feedback submission, administrative dashboards, notification management, and report generation for PROF ELEC 2 and CS3114 activities.  
+- **Target Users:** Enrolled students, course instructors, laboratory or department staff, invited alumni mentors, and parents approved for progress updates.  
 - **Delimitations:** The project does not include automated SMS alerts, native mobile applications, AI-based sentiment analysis, or integration with legacy LMS platforms. Deployment support is limited to PHP 8.x with MySQL on XAMPP and Wasmer containers.
 
 ### 1.5 Review of Related Literature and Studies (RRL/RRS)
