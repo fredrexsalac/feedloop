@@ -11,7 +11,11 @@ if (!defined('FEEDLOOP_SECURE')) {
 // Allow environment override for secure deployments
 $envRedirect = getenv('FEEDLOOP_GOOGLE_REDIRECT_URI');
 
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+if ($forwardedProto) {
+    $forwardedProto = explode(',', $forwardedProto)[0];
+}
+$scheme = $forwardedProto ?: ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 
 $scriptDir = dirname($_SERVER['SCRIPT_NAME'] ?? '/auth/register.php');
