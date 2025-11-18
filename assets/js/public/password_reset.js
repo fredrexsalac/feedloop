@@ -191,7 +191,7 @@ class PasswordReset {
                 
                 // Redirect to login after 3 seconds
                 setTimeout(() => {
-                    window.location.href = data.redirect || '/login.php';
+                    window.location.href = data.redirect || '/auth/login.php';
                 }, 3000);
             } else {
                 this.showAlert(data.message, 'danger');
