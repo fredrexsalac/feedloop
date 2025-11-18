@@ -70,6 +70,7 @@ try {
     $feedback_list = $stmt->fetchAll();
 
     // FeedLoop v2.0: Surface latest custom form responses with submitter details
+    $form_limit_clause = " LIMIT " . (int)$form_responses_limit;
     $form_query = $pdo->prepare("SELECT
             fr.response_id,
             fr.form_id,
@@ -83,9 +84,8 @@ try {
         FROM form_responses fr
         INNER JOIN custom_forms cf ON fr.form_id = cf.form_id
         WHERE fr.is_complete = 1
-        ORDER BY fr.submitted_at DESC
-        LIMIT ?");
-    $form_query->execute([$form_responses_limit]);
+        ORDER BY fr.submitted_at DESC" . $form_limit_clause);
+    $form_query->execute();
     $form_responses = $form_query->fetchAll();
     
 } catch (Exception $e) {
