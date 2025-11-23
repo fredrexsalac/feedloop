@@ -24,7 +24,7 @@ header('Content-Type: application/json');
 require_once '../../../db.php';
 
 // Check if user is logged in and has admin privileges
-if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'super_admin'])) {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     http_response_code(401);
     echo json_encode([
         'success' => false,
@@ -84,9 +84,9 @@ try {
         throw new Exception('Form not found');
     }
     
-    // Check if user is the creator or a super admin
+    // Check if user is the creator
     $user_id = $_SESSION['user_id'];
-    if ($form['created_by'] != $user_id && $_SESSION['role'] !== 'super_admin') {
+    if ($form['created_by'] != $user_id) {
         throw new Exception('You do not have permission to add questions to this form');
     }
     

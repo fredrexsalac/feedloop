@@ -68,13 +68,8 @@ try {
         throw new Exception('Question not found');
     }
 
-    // Only creator or super admin can update
-    $currentAdminStmt = $pdo->prepare('SELECT position FROM admins WHERE user_id = ?');
-    $currentAdminStmt->execute([$user_id]);
-    $currentAdmin = $currentAdminStmt->fetch();
-    $currentPosition = $currentAdmin['position'] ?? null;
-
-    if ($question['created_by'] != $user_id && $currentPosition !== 'Super Admin') {
+    // Only creator can update
+    if ($question['created_by'] != $user_id) {
         throw new Exception('You do not have permission to update this question');
     }
 

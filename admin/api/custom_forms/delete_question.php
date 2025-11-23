@@ -13,7 +13,7 @@ header('Content-Type: application/json');
 require_once '../../../db.php';
 
 // Check if user is logged in and has proper permissions
-if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'super_admin'])) {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
     exit();
@@ -56,8 +56,8 @@ try {
         throw new Exception('Question not found');
     }
     
-    // Check permissions - form creator or Super Admin can delete questions
-    if ($question['created_by'] != $user_id && $question['position'] !== 'Super Admin') {
+    // Check permissions - only form creator can delete questions
+    if ($question['created_by'] != $user_id) {
         throw new Exception('You do not have permission to delete this question');
     }
     
