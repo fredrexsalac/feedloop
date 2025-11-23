@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedLoop Wireframes & UI Prototype Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3f3f3;
+            --ink: #111;
+            --stroke: #1f1f1f;
+            --muted: #5c5c5c;
+            --accent: #4a5568;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #ffffff 0%, #f3f3f3 45%, #ececec 100%);
+            color: var(--ink);
+            line-height: 1.55;
+        }
+        header {
+            padding: 2.5rem clamp(1.5rem, 4vw, 4rem) 1.2rem;
+        }
+        header h1 {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.45rem, 3.7vw, 2.3rem);
+        }
+        header p {
+            margin: 0;
+            max-width: 780px;
+            color: var(--muted);
+        }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            padding: 0 clamp(1.5rem, 4vw, 4rem) 1.2rem;
+        }
+        button#download-btn {
+            border: 2px solid var(--stroke);
+            background: #fff;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.4rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.15s ease;
+        }
+        button#download-btn:hover {
+            transform: translateY(-2px);
+        }
+        .toolbar .hint {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        main {
+            padding: 0 clamp(1.5rem, 4vw, 4rem) 3rem;
+        }
+        .board-wrapper {
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 18px;
+            padding: 1.25rem;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+            position: relative;
+        }
+        .board {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            font-size: clamp(0.78rem, 1.05vw, 0.95rem);
+        }
+        .board::before,
+        .board::after {
+            content: '';
+            position: absolute;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.55) 0 8px, transparent 8px 16px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .board::before {
+            width: 3px;
+            top: -1.25rem;
+            bottom: -1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .board::after {
+            height: 3px;
+            left: -1.25rem;
+            right: -1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .panel {
+            border: 3px solid #1a1a1a;
+            border-radius: 12px;
+            padding: 0.85rem;
+            background: #fafafa;
+            min-height: clamp(240px, 32vw, 320px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            position: relative;
+        }
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: -1.3rem;
+            left: 50%;
+            width: 2px;
+            height: 1.3rem;
+            background: repeating-linear-gradient(180deg, #000 0 6px, transparent 6px 12px);
+            opacity: 0.35;
+        }
+        .panel::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -0.85rem;
+            left: 1rem;
+            background: #fafafa;
+            padding: 0 0.45rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .panel-header span {
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-transform: none;
+        }
+        .nav-line {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .nav-line span:first-child {
+            font-weight: 700;
+        }
+        .search-chip,
+        .cart-chip {
+            border: 2px solid #000;
+            padding: 0.1rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+        }
+        .placeholder {
+            border: 2.4px solid #111;
+            border-radius: 6px;
+            position: relative;
+            background: repeating-linear-gradient(45deg, transparent 0 8px, rgba(0,0,0,0.04) 8px 16px);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .placeholder::before,
+        .placeholder::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 95%;
+            height: 2px;
+            background: #111;
+        }
+        .placeholder::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .placeholder::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .placeholder.hero {
+            min-height: 120px;
+        }
+        .placeholder.cta::before,
+        .placeholder.cta::after {
+            display: none;
+        }
+        .slider-row,
+        .grid-row,
+        .cart-row,
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(52px, 1fr));
+            gap: 0.35rem;
+            align-items: end;
+        }
+        .filters {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .filters label {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        ul.annotations {
+            margin: 0;
+            padding-left: 1rem;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        .ticket-list .ticket {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0.35rem;
+            border-bottom: 2px solid #1a1a1a;
+            font-size: 0.78rem;
+        }
+        .cart-row .line {
+            border: 2px solid #000;
+            border-radius: 6px;
+            padding: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.35rem;
+        }
+        .total-bar {
+            border-top: 2px solid #000;
+            padding-top: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        .tag-row {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            font-size: 0.72rem;
+        }
+        .tag {
+            border: 2px solid #000;
+            border-radius: 999px;
+            padding: 0.05rem 0.5rem;
+        }
+        .question-card {
+            border: 2px solid #111;
+            border-radius: 8px;
+            padding: 0.45rem;
+            font-size: 0.78rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .question-card footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+        .timeline {
+            border-left: 2px dashed #000;
+            padding-left: 0.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+        }
+        .timeline span {
+            position: relative;
+        }
+        .timeline span::before {
+            content: '';
+            position: absolute;
+            left: -0.85rem;
+            top: 0.25rem;
+            width: 0.35rem;
+            height: 0.35rem;
+            border: 2px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        @media (max-width: 900px) {
+            .board::before,
+            .board::after,
+            .panel::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FeedLoop Connected Wireframes</h1>
+        <p>
+            Six compact panels trace the end-to-end experience—from public portal intake through admin moderation, authentication, and
+            notification loops. The layout mirrors the sample grayscale mock-up with continuous wires so reviewers can follow the flow at a glance.
+        </p>
+    </header>
+    <div class="toolbar">
+        <button id="download-btn" type="button">Download PNG</button>
+        <span class="hint">Exports the entire board as an image for 2.3.2 documentation.</span>
+    </div>
+
+    <main>
+        <div class="board-wrapper">
+            <section class="board" id="wireframe-board">
+                <article class="panel">
+                    <div class="panel-badge">Step 01 · Log In</div>
+                    <div class="panel-header">
+                        <div>Logo • Portal</div>
+                        <span>Credentials</span>
+                    </div>
+                    <div class="form-grid">
+                        <label>School Email<input type="text"></label>
+                        <label>Password<input type="password"></label>
+                        <div class="action-row">
+                            <button>Sign in</button>
+                            <a>Forgot?</a>
+                        </div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">OTP</span>
+                        <span class="tag">Google</span>
+                        <span class="tag">Session</span>
+                    </div>
+                    <div class="timeline">
+                        <span>OTP verified</span>
+                        <span>Role detected</span>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-badge">Step 02 · Choose Form</div>
+                    <div class="panel-header">
+                        <div>Feedback Menu</div>
+                        <span>Filters</span>
+                    </div>
+                    <div class="filters">
+                        <label><input type="checkbox" checked> Announcements</label>
+                        <label><input type="checkbox" checked> Events</label>
+                        <label><input type="checkbox"> Facilities</label>
+                        <label><input type="checkbox"> Mentorship</label>
+                    </div>
+                    <div class="mini-grid">
+                        <div class="question-card">
+                            <strong>Activity A</strong>
+                            <p>Schedule & materials</p>
+                        </div>
+                        <div class="question-card">
+                            <strong>Activity B</strong>
+                            <p>Guest speaker</p>
+                        </div>
+                        <div class="question-card">
+                            <strong>Activity C</strong>
+                            <p>Lab facilities</p>
+                        </div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">Search</span>
+                        <span class="tag">Favorites</span>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-badge">Step 03 · Fill Form</div>
+                    <div class="panel-header">
+                        <div>Question Set</div>
+                        <span>Progress 40%</span>
+                    </div>
+                    <div class="form-grid">
+                        <label>Subject<input type="text" value="Lab Orientation"></label>
+                        <label>Category<select><option>Facilities</option></select></label>
+                        <label>Rating<div class="radio-row"><span>☐</span><span>☐</span><span>☐</span><span>☐</span><span>☐</span></div></label>
+                        <label>Comments<textarea></textarea></label>
+                    </div>
+                    <div class="action-row">
+                        <button>Save Draft</button>
+                        <button>Next ▸</button>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-badge">Step 04 · Review & Submit</div>
+                    <div class="panel-header">
+                        <div>Summary</div>
+                        <span>Confirm</span>
+                    </div>
+                    <div class="summary-card">
+                        <p><strong>Activity:</strong> Lab Orientation</p>
+                        <p><strong>Rating:</strong> 4/5</p>
+                        <p><strong>Highlights:</strong> Clear instructions, projector flicker.</p>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">Attachments</span>
+                        <span class="tag">Anon toggle</span>
+                    </div>
+                    <div class="action-row" style="justify-content:flex-end;">
+                        <button>Submit Feedback</button>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-badge">Step 05 · Admin Queue</div>
+                    <div class="panel-header">
+                        <div>Moderation</div>
+                        <span>Status</span>
+                    </div>
+                    <div class="mini-grid">
+                        <div class="question-card">
+                            <strong>New</strong>
+                            <p>12 waiting</p>
+                            <footer><span>Assign</span><span>▸</span></footer>
+                        </div>
+                        <div class="question-card">
+                            <strong>In Review</strong>
+                            <p>5 active</p>
+                            <footer><span>Review</span><span>▸</span></footer>
+                        </div>
+                        <div class="question-card">
+                            <strong>Resolved</strong>
+                            <p>30 archived</p>
+                            <footer><span>Export</span><span>▸</span></footer>
+                        </div>
+                    </div>
+                    <div class="timeline">
+                        <span>Assign to moderator</span>
+                        <span>Respond to user</span>
+                        <span>Log activity</span>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-badge">Step 06 · Notifications</div>
+                    <div class="panel-header">
+                        <div>Comms Board</div>
+                        <span>Alerts</span>
+                    </div>
+                    <div class="timeline">
+                        <span>Push announcement → feed pinned</span>
+                        <span>User notified of response</span>
+                        <span>Admin digest email sent</span>
+                        <span>Analytics updated nightly</span>
+                    </div>
+                    <div class="channel-row">
+                        <span class="tag">SMS</span>
+                        <span class="tag">Email</span>
+                        <span class="tag">Portal</span>
+                        <span class="tag">Dashboard</span>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        const board = document.getElementById('wireframe-board');
+        const downloadBtn = document.getElementById('download-btn');
+
+        downloadBtn.addEventListener('click', () => {
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'Rendering…';
+            html2canvas(board, {
+                backgroundColor: '#ffffff',
+                scale: window.devicePixelRatio > 1 ? 2 : 1.5,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'feedloop-wireframes.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).finally(() => {
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = 'Download PNG';
+            });
+        });
+    </script>
+</body>
+</html>
