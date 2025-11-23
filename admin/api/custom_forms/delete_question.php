@@ -13,7 +13,7 @@ header('Content-Type: application/json');
 require_once '../../../db.php';
 
 // Check if user is logged in and has proper permissions
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'super_admin'])) {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
     exit();
@@ -42,10 +42,11 @@ try {
     
     // First, verify the question exists and user has permission to delete it
     $stmt = $pdo->prepare("
-        SELECT fq.question_id, fq.question_text, fq.form_id, cf.title as form_title, cf.created_by, u.position
+        SELECT fq.question_id, fq.question_text, fq.form_id, cf.title as form_title, cf.created_by, a.position
         FROM form_questions fq
         JOIN custom_forms cf ON fq.form_id = cf.form_id
         JOIN users u ON u.user_id = ?
+        LEFT JOIN admins a ON u.user_id = a.user_id
         WHERE fq.question_id = ?
     ");
     $stmt->execute([$user_id, $question_id]);
