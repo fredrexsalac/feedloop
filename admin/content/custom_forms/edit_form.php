@@ -525,8 +525,12 @@ try {
         }
 
         function addQuestion() {
-            // Placeholder until full builder parity is shipped
-            showNotification('info', 'Adding new questions from this page is coming soon.');
+            activeQuestionCard = null;
+            resetQuestionModal();
+            document.getElementById('editQuestionId').value = '';
+            document.getElementById('questionModalType').value = 'text';
+            toggleQuestionEditorSections('text');
+            questionModalInstance.show();
         }
 
         function editQuestion(questionId) {
@@ -616,7 +620,9 @@ try {
         }
 
         function saveQuestionChanges() {
-            const questionId = parseInt(document.getElementById('editQuestionId').value, 10);
+            const questionIdInput = document.getElementById('editQuestionId').value;
+            const isNewQuestion = !questionIdInput;
+            const questionId = isNewQuestion ? null : parseInt(questionIdInput, 10);
             const questionText = document.getElementById('questionModalText').value.trim();
             const questionType = document.getElementById('questionModalType').value;
             const isRequired = document.getElementById('questionModalRequired').checked;
@@ -632,31 +638,44 @@ try {
             saveBtn.disabled = true;
             saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Saving...';
 
-            fetch('../../api/custom_forms/update_question.php', {
+            const endpoint = isNewQuestion ? '../../api/custom_forms/create_question.php' : '../../api/custom_forms/update_question.php';
+            const formId = document.getElementById('formId').value;
+
+            const requestPayload = isNewQuestion 
+                ? { ...payload, form_id: formId }
+                : payload;
+
+            fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(requestPayload)
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Update question request failed');
+                    throw new Error('Request failed with status ' + response.status);
                 }
                 return response.json();
             })
             .then(data => {
                 if (data.success) {
-                    applyQuestionChangesToCard(activeQuestionCard, payload);
+                    if (isNewQuestion) {
+                        // Add new question to the list
+                        addNewQuestionToList(data.data);
+                        showNotification('success', 'Question added successfully!');
+                    } else {
+                        applyQuestionChangesToCard(activeQuestionCard, payload);
+                        showNotification('success', 'Question updated successfully!');
+                    }
                     questionModalInstance.hide();
-                    showNotification('success', 'Question updated successfully!');
                 } else {
-                    showNotification('error', data.message || 'Failed to update question');
+                    showNotification('error', data.message || 'Failed to save question');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showNotification('error', 'An error occurred while updating the question');
+                showNotification('error', 'An error occurred while saving the question');
             })
             .finally(() => {
                 saveBtn.disabled = false;
@@ -844,6 +863,84 @@ try {
                 console.error('Error:', error);
                 showNotification('error', 'An error occurred while deleting the question');
             });
+        }
+
+        function addNewQuestionToList(questionData) {
+            const questionsList = document.getElementById('questionsList');
+            const noQuestionsMessage = document.getElementById('noQuestionsMessage');
+            
+            // Remove "No Questions Yet" message if it exists
+            if (noQuestionsMessage) {
+                noQuestionsMessage.remove();
+            }
+            
+            questionCounter++;
+            const questionCard = document.createElement('div');
+            questionCard.className = 'question-card card';
+            questionCard.setAttribute('data-question-id', questionData.question_id);
+            questionCard.setAttribute('data-question-type', questionData.question_type);
+            questionCard.setAttribute('data-question-required', questionData.is_required ? '1' : '0');
+            questionCard.setAttribute('data-question-text', questionData.question_text);
+            questionCard.setAttribute('data-question-options', questionData.options || '');
+            questionCard.setAttribute('data-question-placeholder', questionData.placeholder_text || '');
+            questionCard.setAttribute('data-question-validation', questionData.validation_rules || '');
+            questionCard.setAttribute('data-question-min', questionData.min_value || '');
+            questionCard.setAttribute('data-question-max', questionData.max_value || '');
+            questionCard.setAttribute('data-question-step', questionData.step_value || '');
+            
+            let optionsHtml = '';
+            if (questionData.options) {
+                const optionsData = safeJsonParse(questionData.options);
+                if (optionsData && optionsData.options && optionsData.options.length > 0) {
+                    optionsHtml = `
+                        <div class="mt-2">
+                            <small class="text-muted">Options:</small>
+                            <ul class="list-unstyled ms-3">
+                                ${optionsData.options.map(opt => `<li><small>• ${opt}</small></li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+            }
+            
+            let placeholderHtml = '';
+            if (questionData.placeholder_text) {
+                placeholderHtml = `<small class="text-muted d-block">Placeholder: <span class="placeholder-preview">${questionData.placeholder_text}</span></small>`;
+            }
+            
+            questionCard.innerHTML = `
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-grip-vertical drag-handle me-2"></i>
+                            <span class="badge question-type-badge bg-primary me-2 question-type-label">
+                                ${questionData.question_type.toUpperCase()}
+                            </span>
+                            <span class="fw-bold">Question ${questionCounter}</span>
+                            <span class="badge bg-danger ms-2 required-indicator" style="${questionData.is_required ? '' : 'display:none;'}">Required</span>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary" onclick="editQuestion(${questionData.question_id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteQuestion(${questionData.question_id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2 question-text-preview"><strong>${questionData.question_text}</strong></p>
+                    <div class="question-options-preview">
+                        ${optionsHtml}
+                    </div>
+                    <div class="question-meta-preview">
+                        ${placeholderHtml}
+                    </div>
+                </div>
+            `;
+            
+            questionsList.appendChild(questionCard);
         }
 
         function previewForm() {
