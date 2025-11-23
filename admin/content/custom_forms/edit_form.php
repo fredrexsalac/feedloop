@@ -30,7 +30,7 @@ try {
     
     // Get form details and verify permissions
     $stmt = $pdo->prepare("
-        SELECT cf.*, u.position,
+        SELECT cf.*, a.position,
                COALESCE(a.full_name, u.username) as creator_name
         FROM custom_forms cf
         JOIN users u ON cf.created_by = u.user_id
