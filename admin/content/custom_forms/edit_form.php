@@ -505,7 +505,12 @@ try {
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Update form request failed');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     showNotification('success', 'Form updated successfully!');
@@ -634,7 +639,12 @@ try {
                 },
                 body: JSON.stringify(payload)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Update question request failed');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     applyQuestionChangesToCard(activeQuestionCard, payload);
