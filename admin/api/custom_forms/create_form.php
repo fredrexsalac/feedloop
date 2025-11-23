@@ -124,6 +124,9 @@ try {
     
     $max_responses = !empty($input['max_responses']) ? (int)$input['max_responses'] : null;
     
+    $allow_anonymous = isset($input['allow_anonymous']) ? (bool)$input['allow_anonymous'] : true;
+    $require_login = isset($input['require_login']) ? (bool)$input['require_login'] : !$allow_anonymous;
+
     $stmt->execute([
         $input['title'],
         $input['description'] ?? null,
@@ -134,8 +137,8 @@ try {
         $event_name,
         $form_code,
         $shareable_link,
-        $input['allow_anonymous'] ?? true,
-        !($input['allow_anonymous'] ?? true), // require_login is opposite of allow_anonymous
+        $allow_anonymous ? 1 : 0,
+        $require_login ? 1 : 0,
         $max_responses,
         $expires_at
     ]);
